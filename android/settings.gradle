@@ -1,0 +1,3 @@
+rootProject.name = 'spiffy'
+
+include ':app'
