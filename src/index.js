@@ -1,16 +1,16 @@
-import { AppRegistry } from 'react-native'
 import React, { Component } from 'react'
+import { AppRegistry } from 'react-native'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import firebase from 'firebase'
-import { FIREBASE_CONFIG } from './config'
 import reducers from './reducers'
+import config from './config'
 import Router from './containers/Router'
 
 class App extends Component {
     componentWillMount() {
-        firebase.initializeApp(FIREBASE_CONFIG)
+        firebase.initializeApp(config.FIREBASE)
     }
     
     render() {

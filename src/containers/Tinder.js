@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SwipeCards from 'react-native-swipe-cards'
-import TinderCard from './TinderCard'
+import TinderCard from '../components/TinderCard'
 
 class Tinder extends Component {
 	constructor(props) {
