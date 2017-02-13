@@ -8,14 +8,14 @@ import reducers from './reducers'
 import config from './config'
 import Router from './containers/Router'
 
-class App extends Component {
-    componentWillMount() {
-        firebase.initializeApp(config.FIREBASE)
-    }
-    
-    render() {
-        const store = createStore(reducers, applyMiddleware(thunk))
+// Initialize Firebase
+const firebaseApp = firebase.initializeApp(config.FIREBASE)
 
+// Initialize Redux store
+const store = createStore(reducers, applyMiddleware(thunk))
+
+class App extends Component {
+    render() {
         return (
             <Provider store={store}>
                 <Router />
