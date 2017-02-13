@@ -7,8 +7,8 @@ const RouterComponent = () => {
     return (
         <Router> 
             <Scene key="root" tabs >
-                <Scene key="youtube" component={Youtube} style={{ flex: 1 }} hideNavBar />
                 <Scene key="tinder" component={Tinder} hideNavBar />
+                <Scene key="youtube" component={Youtube} style={{ flex: 1 }} hideNavBar />
             </Scene>
         </Router>
     )

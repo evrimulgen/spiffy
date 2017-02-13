@@ -1,75 +1,51 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
-	StyleSheet,
-	Text,
-	View,
-	TouchableOpacity
-} from 'react-native';
-import YouTube from 'react-native-youtube';
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+	Dimensions,
+} from 'react-native'
+import YouTube from 'react-native-youtube'
+import config from '../config'
 
 class YoutubeComponent extends Component {
-	state = {
-		isReady: false,
-		status: null,
-		quality: null,
-		error: null,
-		isPlaying: true
-	}
-
-	render() {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.welcome}>
-					{"<Youtube /> component for \n React Native."}
-				</Text>
-				<Text style={styles.instructions}>
-					http://github.com/paramaggarwal/react-native-youtube
-				</Text>
-
-				<YouTube
-					videoId="KVZ-P-ZI6W4"
-					play={this.state.isPlaying}
-					hidden={false}
-					playsInline={true}
-					apiKey="yourApiKey"
-					onReady={(e)=>{this.setState({isReady: true})}}
-					onChangeState={(e)=>{this.setState({status: e.state})}}
-					onChangeQuality={(e)=>{this.setState({quality: e.quality})}}
-					onError={(e)=>{this.setState({error: e.error})}}
-					style={{alignSelf: 'stretch', height: 250, backgroundColor: 'black', marginVertical: 10}}
-				/>
-
-			<TouchableOpacity onPress={()=>{this.setState((s) => {return {isPlaying: !s.isPlaying};} )}}>
-				<Text style={[styles.welcome, {color: 'blue'}]}>{this.state.status == 'playing' ? 'Pause' : 'Play'}</Text>
-			</TouchableOpacity>
-
-			<Text style={styles.instructions}>{this.state.isReady ? 'Player is ready.' : 'Player setting up...'}</Text>
-			<Text style={styles.instructions}>Status: {this.state.status}</Text>
-			<Text style={styles.instructions}>Quality: {this.state.quality}</Text>
-			<Text style={styles.instructions}>{this.state.error ? 'Error: ' + this.state.error : ' '}</Text>
-
-		</View>
-		);
-	}
+    render() {
+        return (
+            <View style={styles.container}>
+				<View style={styles.cover}>
+					<YouTube
+						play
+						playsInline
+						fs={false}
+						controls={2}
+						videoId="8oZwTQdZ1jA"
+						apiKey={config.YOUTUBE_API}
+						style={styles.youtube}
+					/>
+				</View>
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
-	container: {
+	youtube: {
+		height: 169,
+		width: 300,
+	},
+	cover: {
+        justifyContent: 'center',
+        alignItems: 'center',
+		height: 300,
+		width: 300,
+		backgroundColor: '#f1f1f1',
+	},
+    container: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
-	},
-	welcome: {
-		fontSize: 20,
-		textAlign: 'center',
-		margin: 10,
-	},
-	instructions: {
-		textAlign: 'center',
-		color: '#333333',
-		marginBottom: 5,
-	},
-});
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})
 
 export default YoutubeComponent

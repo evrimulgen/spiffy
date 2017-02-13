@@ -1,9 +1,12 @@
 import { StyleSheet, Dimensions } from 'react-native'
 
-const { height, width } = Dimensions.get('window')
+export const HEIGHT = Dimensions.get('window').height
+export const WIDTH = Dimensions.get('window').width
 
-const styles = StyleSheet.create({
+export const colors = {
+    main: '#FF473A',
+}
+
+export const styles = StyleSheet.create({
 
 })
-
-export default styles
