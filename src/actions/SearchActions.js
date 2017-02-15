@@ -4,6 +4,7 @@ import {
   FETCH_VIDEOS_SUCCESS,
   FETCH_VIDEOS_FAILURE,
 } from './types'
+import YoutubeApi from '../utils/YoutubeApi'
 
 export function keywordChanged(keyword) {
   return (dispatch) => {
@@ -15,13 +16,14 @@ export function keywordChanged(keyword) {
       type: FETCH_VIDEOS_REQUEST,
     })
     YoutubeApi.search(keyword)
-      .then(json => dispatch({
+      .then(response => dispatch({
         type: FETCH_VIDEOS_SUCCESS,
-        response: json
+        payload: response
       }))
       .catch(error => dispatch({
         type: FETCH_VIDEOS_FAILURE,
-        error,
+        payload: error,
+        error: true,
       }))
   }
 }

@@ -1,5 +1,5 @@
 import ApiUtils from './ApiUtils'
-import config from '../conifg'
+import config from '../config'
 
 const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 const queryString = `?part=snippet&key=${config.YOUTUBE_KEY}&q=`

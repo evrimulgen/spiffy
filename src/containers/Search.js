@@ -5,16 +5,10 @@ import {
 	StyleSheet,
 	TextInput,
 } from 'react-native';
-import { searchChanged } from '../actions'
+import { connect } from 'react-redux'
+import { keywordChanged } from '../actions'
 
 class Search extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			text: '',
-		}
-	}
-
   render() {
     return (
       <View style={styles.container}>
@@ -23,13 +17,17 @@ class Search extends Component {
 						underlineColorAndroid={'transparent'}
 						style={styles.textInput}
 						placeholder="Search on YouTube"
-						value={this.state.text}
-						onChangeText={text => this.searchChanged(text)}
+						value={this.props.keyword}
+						onChangeText={keyword => this.props.dispatch(keywordChanged(keyword))}
 					/>
 				</View>
       </View>
     );
   }
+}
+
+Search.propTypes = {
+	keyword: React.PropTypes.string,
 }
 
 const styles = StyleSheet.create({
@@ -57,4 +55,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Search
+const mapStateToProps = (state) => {
+	return {
+		keyword: state.search.keyword,
+	}
+}
+
+export default connect(mapStateToProps)(Search)
