@@ -18,7 +18,7 @@ export function keywordChanged(keyword) {
     YoutubeApi.search(keyword)
       .then(response => dispatch({
         type: FETCH_VIDEOS_SUCCESS,
-        payload: response
+        payload: response.items
       }))
       .catch(error => dispatch({
         type: FETCH_VIDEOS_FAILURE,

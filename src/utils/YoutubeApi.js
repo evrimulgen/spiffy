@@ -8,7 +8,7 @@ export default {
   search: function(keyword) {
     return fetch(SEARCH_URL+queryString+keyword)
       .then(ApiUtils.checkStatus)
-      .then(response => console.log(response.json()))
+      .then(response => response.json())
       .catch(error => error)
   },
 }

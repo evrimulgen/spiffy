@@ -8,6 +8,7 @@ import {
 const initialState = {
   keyword: '',
   isFetching: false,
+  videos: [],
 }
 
 export function search(prevState = initialState, action) {
@@ -17,7 +18,7 @@ export function search(prevState = initialState, action) {
     case FETCH_VIDEOS_REQUEST:
       return { ...prevState, isFetching: true }
     case FETCH_VIDEOS_SUCCESS:
-      return { ...prevState, isFetching: false }
+      return { ...prevState, isFetching: false, videos: action.payload }
     case FETCH_VIDEOS_FAILURE:
       console.error(action.payload)
       return { ...prevState, isFetching: false }
