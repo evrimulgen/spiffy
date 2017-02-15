@@ -6,7 +6,7 @@ import thunk from 'redux-thunk'
 import firebase from 'firebase'
 import reducers from './reducers'
 import config from './config'
-import Router from './containers/Router'
+import Router from './containers'
 
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(config.FIREBASE)
@@ -15,13 +15,13 @@ const firebaseApp = firebase.initializeApp(config.FIREBASE)
 const store = createStore(reducers, applyMiddleware(thunk))
 
 class App extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Router />
-            </Provider>
-        )
-    }
+  render() {
+    return (
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    )
+  }
 }
 
-AppRegistry.registerComponent('spiffy', () => App);
+AppRegistry.registerComponent('spiffy', () => App)

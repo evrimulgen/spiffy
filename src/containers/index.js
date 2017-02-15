@@ -2,13 +2,14 @@ import React from 'react'
 import { Scene, Router } from 'react-native-router-flux'
 import Tinder from "../containers/Tinder"
 import Youtube from "../components/Youtube"
+import Search from "../containers/Search"
 
 const RouterComponent = () => {
     return (
-        <Router> 
+        <Router>
             <Scene key="root" tabs >
+                <Scene key="search" component={Search} hideNavBar />
                 <Scene key="tinder" component={Tinder} hideNavBar />
-                <Scene key="youtube" component={Youtube} style={{ flex: 1 }} hideNavBar />
             </Scene>
         </Router>
     )
