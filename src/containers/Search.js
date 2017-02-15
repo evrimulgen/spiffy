@@ -5,7 +5,7 @@ import {
 	StyleSheet,
 	TextInput,
 } from 'react-native';
-import { emailChanged } from '../actions'
+import { searchChanged } from '../actions'
 
 class Search extends Component {
 	constructor(props) {
@@ -24,7 +24,7 @@ class Search extends Component {
 						style={styles.textInput}
 						placeholder="Search on YouTube"
 						value={this.state.text}
-						onChangeText={text => this.emailChanged(text)}
+						onChangeText={text => this.searchChanged(text)}
 					/>
 				</View>
       </View>

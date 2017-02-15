@@ -1,12 +1,14 @@
 import ApiUtils from './ApiUtils'
+import config from '../conifg'
 
-const API_URL = ""
+const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
+const queryString = `?part=snippet&key=${config.YOUTUBE_KEY}&q=`
 
 export default {
-  getItems: function() {
-    return fetch(API_URL)
+  search: function(keyword) {
+    return fetch(SEARCH_URL+queryString+keyword)
       .then(ApiUtils.checkStatus)
-      .then(response => response.json())
-      .catch(e => e)
+      .then(response => console.log(response.json()))
+      .catch(error => error)
   },
 }

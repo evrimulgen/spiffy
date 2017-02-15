@@ -6,5 +6,5 @@ export default {
         storageBucket: "spiffy-9ea3b.appspot.com",
         messagingSenderId: "193797854339"
     },
-    YOUTUBE_API: "AIzaSyA00TWwG91Alc2Dejhuj8e0lIzwt-UkGH0",
+    YOUTUBE_KEY: "AIzaSyA00TWwG91Alc2Dejhuj8e0lIzwt-UkGH0",
 }
