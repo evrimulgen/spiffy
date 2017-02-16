@@ -3,7 +3,7 @@ import {
   FETCH_VIDEOS_REQUEST,
   FETCH_VIDEOS_SUCCESS,
   FETCH_VIDEOS_FAILURE,
-} from '../actions/types'
+} from '../actions/Types'
 
 const initialState = {
   keyword: '',

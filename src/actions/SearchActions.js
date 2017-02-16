@@ -3,7 +3,7 @@ import {
   FETCH_VIDEOS_REQUEST,
   FETCH_VIDEOS_SUCCESS,
   FETCH_VIDEOS_FAILURE,
-} from './types'
+} from './Types'
 import YoutubeApi from '../utils/YoutubeApi'
 
 export function keywordChanged(keyword) {

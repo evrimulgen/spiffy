@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { keywordChanged } from '../actions'
-import VideosList from '../components/search/VideosList'
+import VideosList from '../components/VideoList'
 
 class Search extends Component {
   render() {
