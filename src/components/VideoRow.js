@@ -2,9 +2,14 @@ import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 
 function VideosRow(props) {
-  const { title } = props.snippet
+  const { title, thumbnails } = props.snippet
+
   return (
     <View style={styles.container}>
+      <Image
+          style={{ width: thumbnails.default.width, height: thumbnails.default.height }}
+          source={{ uri: thumbnails.default.url }}
+        />
       <Text style={styles.text}>
         {title}
       </Text>
