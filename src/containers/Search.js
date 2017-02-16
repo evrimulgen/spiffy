@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { keywordChanged } from '../actions'
+import VideosList from '../components/search/VideosList'
 
 class Search extends Component {
   render() {
@@ -21,6 +22,7 @@ class Search extends Component {
 						onChangeText={keyword => this.props.dispatch(keywordChanged(keyword))}
 					/>
 				</View>
+				<VideosList videos={this.props.videos} />
       </View>
     );
   }
@@ -56,9 +58,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-	return {
-		keyword: state.search.keyword,
-	}
+	return state.search
 }
 
 export default connect(mapStateToProps)(Search)
