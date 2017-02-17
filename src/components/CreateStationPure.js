@@ -1,18 +1,24 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TextInput } from 'react-native'
 
 const propTypes = {}
 const defaultProps = {}
 
-function CreateStationPure(props) {
+ function CreateStationPure(props) {
   return (
     <View style={styles.container}>
-      <Text>Bite</Text>
+      <TextInput
+        underlineColorAndroid={'transparent'}
+        style={styles.textInput}
+        placeholder="Playlist Title"
+        onChangeText={props.onChangeTitle}
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  textInput: {},
   container: {
     flex: 1,
     backgroundColor: 'rgb(230, 108, 147)',
