@@ -15,6 +15,7 @@ class VideoList extends React.Component {
   constructor(props) {
     super(props)
     this.updateDatasource = updateDatasource.bind(this)
+    this.renderRow = this.renderRow.bind(this)
   }
 
   componentWillMount() {
@@ -25,13 +26,24 @@ class VideoList extends React.Component {
     this.updateDatasource(nextProps.videos)
   }
 
+  pressRow(rowId) {
+    console.log(rowId+' pressed')
+
+  }
+
+  renderRow(data) {
+    return (
+      <VideoRow {...data} onPress={() => this.pressRow(data.id.videoId)} />
+    )
+  }
+
   render() {
     return (
       <ListView
         enableEmptySections
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={data => <VideoRow {...data} />}
+        renderRow={this.renderRow}
       />
     )
   }

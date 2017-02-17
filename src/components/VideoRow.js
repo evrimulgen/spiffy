@@ -1,19 +1,22 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
 
 function VideosRow(props) {
-  const { title, thumbnails } = props.snippet
-
+  const thumbnail = props.snippet.thumbnails.default
+  console.log('Props dans VideosRow')
+  console.log(props)
   return (
-    <View style={styles.container}>
-      <Image
-          style={{ width: thumbnails.default.width, height: thumbnails.default.height }}
-          source={{ uri: thumbnails.default.url }}
+    <TouchableOpacity onPress={props.onPress}>
+      <View style={styles.container}>
+        <Image
+          style={{ width: thumbnail.width, height: thumbnail.height }}
+          source={{ uri: thumbnail.url }}
         />
-      <Text style={styles.text}>
-        {title}
-      </Text>
-    </View>
+        <Text style={styles.text}>
+          {props.snippet.title}
+        </Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 
