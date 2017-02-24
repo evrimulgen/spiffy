@@ -20,7 +20,7 @@ class YoutubeComponent extends Component {
 						fs={false}
 						controls={2}
 						videoId="8oZwTQdZ1jA"
-						apiKey={config.YOUTUBE_API}
+						apiKey={config.YOUTUBE_KEY}
 						style={styles.youtube}
 					/>
 				</View>
