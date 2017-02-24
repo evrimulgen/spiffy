@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "193797854339",
+    "firebase_url": "https://spiffy-9ea3b.firebaseio.com",
+    "project_id": "spiffy-9ea3b",
+    "storage_bucket": "spiffy-9ea3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193797854339:android:8d3422f5aae920a2",
+        "android_client_info": {
+          "package_name": "com.spiffy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193797854339-902sg2ie93enlm3rk3f2soeqmlhq0su6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqdAgF_vSnh5eRaBPumpBMo1CRsDYHCS8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
