@@ -1,11 +1,6 @@
 import config from '../config'
 import { makeQuery } from '.'
 
-const part = "snippet"  // Specifies specific portions of resource we want
-const topicId = "/m/04rlf"  // Topic associated with music
-const type = "video"  // Only display videos
-const queryString = `?key=${config.YOUTUBE_KEY}&part=${part}&topicId=${topicId}&type=${type}&q=`
-
 export function search(keyword) {
   const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
   const SEARCH_PARAMS = {
@@ -17,5 +12,24 @@ export function search(keyword) {
   }
   return fetch(makeQuery(SEARCH_URL, SEARCH_PARAMS))
     .then(response => response.json())
-    .catch(error => error)
+    .catch(error => console.log(error))
+}
+
+export function createPlaylist(playlist) {
+  const PLAYLIST_URL = 'https://www.googleapis.com/youtube/v3/playlists'
+  const PLAYLIST_PARAMS = {
+    key: config.YOUTUBE_KEY,
+    part: 'snippet',
+  }
+  return fetch(makeQuery(PLAYLIST_URL, PLAYLIST_PARAMS),
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        snippet: {
+          title: playlist.title
+        }
+      })
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error))
 }

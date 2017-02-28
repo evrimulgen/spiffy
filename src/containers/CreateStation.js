@@ -18,7 +18,7 @@ class CreateStation extends Component {
   }
 
   onCreateStation() {
-    this.props.dispatch(stationCreated())
+    this.props.dispatch(stationCreated(this.props.title))
   }
 
   render() {

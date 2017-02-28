@@ -1,4 +1,4 @@
-import { createStation } from '../actions/Types'
+import { createStation as t } from '../actions/Types'
 
 initialState = {
   title: '',
@@ -6,7 +6,7 @@ initialState = {
 
 function CreateStationReducer(state = initialState, action) {
   switch (action.type) {
-    case createStation.TITLE_CHANGED:
+    case t.TITLE_CHANGED:
       return { ...state, title: action.payload }
     default:
       return state

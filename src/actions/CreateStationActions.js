@@ -1,4 +1,5 @@
 import { createStation as t } from './Types'
+import { createPlaylist } from '../utils/YoutubeApi'
 
 export function titleChanged(title) {
   return {
@@ -7,8 +8,13 @@ export function titleChanged(title) {
   }
 }
 
-export function stationCreated() {
-  return {
-    type: t.CREATE_STATION_REQUEST,
+export function stationCreated(title) {
+  return (dispatch) => {
+    dispatch({
+      type: t.CREATE_STATION_REQUEST,
+    })
+    createPlaylist({ title })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 }
