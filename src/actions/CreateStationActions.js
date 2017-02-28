@@ -13,7 +13,7 @@ export function stationCreated(title) {
     dispatch({
       type: t.CREATE_STATION_REQUEST,
     })
-    createPlaylist({ title })
+    createPlaylist(title)
       .then(res => console.log(res))
       .catch(err => console.log(err))
   }

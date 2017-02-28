@@ -15,21 +15,27 @@ export function search(keyword) {
     .catch(error => console.log(error))
 }
 
-export function createPlaylist(playlist) {
+export function createPlaylist(title) {
   const PLAYLIST_URL = 'https://www.googleapis.com/youtube/v3/playlists'
   const PLAYLIST_PARAMS = {
     key: config.YOUTUBE_KEY,
     part: 'snippet',
+    alt: 'json',
+    access_token: 'ya29.GlsABFR7Pt-LlVd9RblSz7Iebyu480MuENW2Y5O6ob6DdU7Xpof44Hq3wpo3ekt7JAenKmRVphuI5uR7y_qlQShkqxgI5G6lJkx2VuGqmqMiMKtTwvtphbrUPU5N',
   }
-  return fetch(makeQuery(PLAYLIST_URL, PLAYLIST_PARAMS),
-    {
-      method: 'POST',
-      body: JSON.stringify({
-        snippet: {
-          title: playlist.title
-        }
-      })
+  const request = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      snippet: {
+        title: title
+      }
     })
+  }
+  return fetch(makeQuery(PLAYLIST_URL, PLAYLIST_PARAMS), request)
     .then(response => response.json())
     .catch(error => console.log(error))
 }
