@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, ListView, StyleSheet, Text } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 import VideoRow from './VideoRow'
 import { updateDatasource } from '../utils'
 
@@ -28,7 +29,7 @@ class VideoList extends React.Component {
 
   pressRow(rowId) {
     console.log(rowId+' pressed')
-
+    Actions.station()
   }
 
   renderRow(data) {

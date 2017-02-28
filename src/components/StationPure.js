@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 const propTypes = {}
 const defaultProps = {}
@@ -7,7 +7,10 @@ const defaultProps = {}
 function StationPure(props) {
   return (
     <View style={styles.container}>
-      <Text>Bite</Text>
+      <Text>Station title: {props.stationTitle}</Text>
+      <TouchableOpacity onPress={props.addSong}>
+        <Text>Add song</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -15,6 +18,7 @@ function StationPure(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     backgroundColor: 'rgb(230, 108, 147)',
   },
 })
