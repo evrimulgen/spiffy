@@ -7,7 +7,8 @@ export function googleSignIn() {
         'openid',
         'email',
         'profile',
-        'https://www.googleapis.com/auth/youtube', 'https://www.googleapis.com/auth/youtubepartner'],
+        'https://www.googleapis.com/auth/youtube',
+      ],
     })
       .then(() => GoogleSignIn.signInPromise())
   )
