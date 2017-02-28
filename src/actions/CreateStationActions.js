@@ -15,7 +15,14 @@ export function stationCreated(title) {
       type: t.CREATE_STATION_REQUEST,
     })
     createPlaylist(title, accessToken)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+      .then(response => dispatch({
+        type: t.CREATE_STATION_SUCCESS,
+        payload: response,
+      }))
+      .catch(error => dispatch({
+        type: t.CREATE_STATION_FAILURE,
+        payload: error,
+        error: true,
+      }))
   }
 }
