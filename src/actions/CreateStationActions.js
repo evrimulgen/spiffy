@@ -9,11 +9,12 @@ export function titleChanged(title) {
 }
 
 export function stationCreated(title) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const { user: { accessToken } } = getState()
     dispatch({
       type: t.CREATE_STATION_REQUEST,
     })
-    createPlaylist(title)
+    createPlaylist(title, accessToken)
       .then(res => console.log(res))
       .catch(err => console.log(err))
   }

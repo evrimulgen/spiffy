@@ -15,13 +15,13 @@ export function search(keyword) {
     .catch(error => console.log(error))
 }
 
-export function createPlaylist(title) {
+export function createPlaylist(title, accessToken) {
   const PLAYLIST_URL = 'https://www.googleapis.com/youtube/v3/playlists'
   const PLAYLIST_PARAMS = {
     key: config.YOUTUBE_KEY,
     part: 'snippet',
     alt: 'json',
-    access_token: 'ya29.GlsABFR7Pt-LlVd9RblSz7Iebyu480MuENW2Y5O6ob6DdU7Xpof44Hq3wpo3ekt7JAenKmRVphuI5uR7y_qlQShkqxgI5G6lJkx2VuGqmqMiMKtTwvtphbrUPU5N',
+    access_token: accessToken,
   }
   const request = {
     method: 'POST',
