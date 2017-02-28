@@ -1,5 +1,6 @@
 import { createStation as t } from './Types'
 import { createPlaylist } from '../utils/YoutubeApi'
+import { Actions } from 'react-native-router-flux'
 
 export function titleChanged(title) {
   return {
@@ -24,5 +25,6 @@ export function stationCreated(title) {
         payload: error,
         error: true,
       }))
+      .then(() => Actions.station())
   }
 }
