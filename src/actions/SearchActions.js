@@ -1,5 +1,5 @@
 import { search as t } from './Types'
-import YoutubeApi from '../utils/YoutubeApi'
+import { search } from '../utils/YoutubeApi'
 
 export function keywordChanged(keyword) {
   return (dispatch) => {
@@ -10,7 +10,7 @@ export function keywordChanged(keyword) {
     dispatch({
       type: t.FETCH_VIDEOS_REQUEST,
     })
-    YoutubeApi.search(keyword)
+    search(keyword)
       .then(response => dispatch({
         type: t.FETCH_VIDEOS_SUCCESS,
         payload: response.items
