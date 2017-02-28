@@ -7,4 +7,5 @@ export const search = {
 
 export const createStation = {
   TITLE_CHANGED: 'TITLE_CHANGED',
+  STATION_CREATED: 'STATION_CREATED',
 }

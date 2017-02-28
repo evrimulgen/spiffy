@@ -6,3 +6,9 @@ export function titleChanged(title) {
     payload: title,
   }
 }
+
+export function stationCreated() {
+  return {
+    type: t.STATION_CREATED,
+  }
+}

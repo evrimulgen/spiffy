@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
 const propTypes = {}
 const defaultProps = {}
 
- function CreateStationPure(props) {
+function CreateStationPure(props) {
   return (
     <View style={styles.container}>
       <TextInput
@@ -13,6 +13,12 @@ const defaultProps = {}
         placeholder="Playlist Title"
         onChangeText={props.onChangeTitle}
       />
+      <TouchableOpacity
+        onPress={props.onCreateStation}>
+        <Text>
+          Create Station
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
