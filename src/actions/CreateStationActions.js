@@ -9,6 +9,6 @@ export function titleChanged(title) {
 
 export function stationCreated() {
   return {
-    type: t.STATION_CREATED,
+    type: t.CREATE_STATION_REQUEST,
   }
 }
