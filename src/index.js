@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk'
 import firebase from 'firebase'
 import rootReducer from './reducers'
 import config from './config'
-import Router from './containers'
+import Router from './containers/Router'
 
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(config.FIREBASE)

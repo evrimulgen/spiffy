@@ -1,5 +1,5 @@
-import ApiUtils from './ApiUtils'
 import config from '../config'
+import { checkStatus } from './Utils'
 
 const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 const part = "snippet"  // Specifies specific portions of resource we want
@@ -10,7 +10,7 @@ const queryString = `?key=${config.YOUTUBE_KEY}&part=${part}&topicId=${topicId}&
 export default {
   search: function(keyword) {
     return fetch(SEARCH_URL+queryString+keyword)
-      .then(ApiUtils.checkStatus)
+      .then(checkStatus)
       .then(response => response.json())
       .catch(error => error)
   },
