@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "193797854339-f0piusdtv5u8cbbp0jhu51avn7klhj4i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spiffy",
+            "certificate_hash": "ea380ef5505a5bb92b856bc939bbfbb056161f88"
+          }
+        },
+        {
           "client_id": "193797854339-902sg2ie93enlm3rk3f2soeqmlhq0su6.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193797854339-902sg2ie93enlm3rk3f2soeqmlhq0su6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
