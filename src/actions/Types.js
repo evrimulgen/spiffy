@@ -9,3 +9,7 @@ export const createStation = {
   TITLE_CHANGED: 'TITLE_CHANGED',
   STATION_CREATED: 'STATION_CREATED',
 }
+
+export const login = {
+  USER_LOGGED_IN: 'USER_LOGGED_IN',
+}

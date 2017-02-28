@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Scene, Router } from 'react-native-router-flux'
 import Tinder from './Tinder'
 import Search from './Search'
 import CreateStation from './CreateStation'
 import { googleSignIn } from '../utils/Login'
+import { userLoggedIn } from '../actions'
 
 class MyRouter extends Component {
   componentDidMount() {
     googleSignIn()
-      .then(user => console.log(user))
+      .then(user => this.props.dispatch(userLoggedIn(user)))
       .catch(() => googleSignIn())
   }
 
@@ -25,4 +27,4 @@ class MyRouter extends Component {
   }
 }
 
-export default MyRouter
+export default connect()(MyRouter)
