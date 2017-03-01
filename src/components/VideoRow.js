@@ -3,8 +3,6 @@ import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
 
 function VideosRow(props) {
   const thumbnail = props.snippet.thumbnails.default
-  console.log('Props dans VideosRow')
-  console.log(props)
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={styles.container}>
