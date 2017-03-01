@@ -20,22 +20,44 @@ export function createPlaylist(title, accessToken) {
   const PLAYLIST_PARAMS = {
     key: config.YOUTUBE_KEY,
     part: 'snippet',
-    alt: 'json',
     access_token: accessToken,
   }
   const request = {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       snippet: {
-        title: title
-      }
+        title: title,
+      },
     })
   }
   return fetch(makeQuery(PLAYLIST_URL, PLAYLIST_PARAMS), request)
     .then(response => response.json())
     .catch(error => console.log(error))
+}
+
+export function addVideo({ playlistId, videoId }, accessToken) {
+  const ITEM_URL = 'https://www.googleapis.com/youtube/v3/playlistItems'
+  const ITEM_PARAMS = {
+    key: config.YOUTUBE_KEY,
+    part: 'snippet',
+    access_token: accessToken,
+  }
+  const request = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      snippet: {
+        playlistId: playlistId,
+        ressourceId: {
+          kind: 'youtube#video',
+          videoId: videoId,
+        }
+      }
+    })
+  }
 }
