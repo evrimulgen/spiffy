@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
 
+const propTypes = {
+  thumbnail: PropTypes.object,
+  title: PropTypes.string,
+}
+
+const defaultProps = {
+  thumbnail: { url: '', width: 0, height: 0 },
+  title: '',
+}
+
 function VideosRow(props) {
-  const thumbnail = props.snippet.thumbnails.default
   return (
     <TouchableOpacity onPress={props.onRowPressed}>
       <View style={styles.container}>
         <Image
-          style={{ width: thumbnail.width, height: thumbnail.height }}
-          source={{ uri: thumbnail.url }}
+          style={{ width: props.thumbnail.width, height: props.thumbnail.height }}
+          source={{ uri: props.thumbnail.url }}
         />
         <Text style={styles.text}>
-          {props.snippet.title}
+          {props.title}
         </Text>
       </View>
     </TouchableOpacity>

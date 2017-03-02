@@ -28,8 +28,9 @@ class VideoList extends React.Component {
   }
 
   renderRow(data) {
+    const video = { thumbnail: data.snippet.thumbnails.default, title: data.snippet.title }
     return (
-      <VideoRow {...data} onRowPressed={() => this.props.onItemSelected(data.id.videoId)} />
+      <VideoRow {...video} onRowPressed={() => this.props.onItemSelected(data.id.videoId)} />
     )
   }
 
