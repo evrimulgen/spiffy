@@ -60,7 +60,6 @@ export function addVideo(playlistId, videoId, accessToken) {
       }
     })
   }
-  console.log(request)
   return fetch(makeQuery(ITEM_URL, ITEM_PARAMS), request)
     .then(response => response.json())
     .catch(error => console.log(error))
