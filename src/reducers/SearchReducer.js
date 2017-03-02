@@ -1,25 +1,45 @@
-import { search } from '../actions/Types'
+import { combineReducers } from 'redux'
+import { search as t } from '../actions/Types'
 
-const initialState = {
-  keyword: '',
-  isFetching: false,
-  videos: [],
-}
-
-function searchReducer(state = initialState, action) {
+function keyword(state = '', action) {
   switch (action.type) {
-    case search.KEYWORD_CHANGED:
-      return { ...state, keyword: action.payload }
-    case search.FETCH_VIDEOS_REQUEST:
-      return { ...state, isFetching: true }
-    case search.FETCH_VIDEOS_SUCCESS:
-      return { ...state, isFetching: false, videos: action.payload }
-    case search.FETCH_VIDEOS_FAILURE:
-      console.error(action.payload)
-      return { ...state, isFetching: false }
+    case t.KEYWORD_CHANGED:
+      return action.payload
     default:
       return state
   }
 }
 
-export default searchReducer
+const initialResults = {
+  fetching: false,
+  items: [],
+}
+
+function results(state = initialResults, action) {
+  switch (action.type) {
+    case t.FETCH_VIDEOS_REQUEST:
+      return { ...state, fetching: true }
+    case t.FETCH_VIDEOS_SUCCESS:
+      return { ...state, fetching: false, items: action.payload }
+    case t.FETCH_VIDEOS_FAILURE:
+      console.error(action.payload)
+      return { ...state, fetching: false }
+    default:
+      return state
+  }
+}
+
+function selectedItemId(state = '', action) {
+  switch (action.type) {
+    case t.ITEM_SELECTED:
+      return action.payload
+    default:
+      return state
+  }
+}
+
+export default combineReducers({
+  keyword,
+  selectedItemId,
+  results,
+})

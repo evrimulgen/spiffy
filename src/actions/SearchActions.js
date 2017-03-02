@@ -5,7 +5,7 @@ export function keywordChanged(keyword) {
   return (dispatch) => {
     dispatch({
       type: t.KEYWORD_CHANGED,
-      payload: keyword
+      payload: keyword,
     })
     dispatch({
       type: t.FETCH_VIDEOS_REQUEST,
@@ -13,12 +13,21 @@ export function keywordChanged(keyword) {
     search(keyword)
       .then(response => dispatch({
         type: t.FETCH_VIDEOS_SUCCESS,
-        payload: response.items
+        payload: response.items,
       }))
       .catch(error => dispatch({
         type: t.FETCH_VIDEOS_FAILURE,
         payload: error,
         error: true,
       }))
+  }
+}
+
+export function itemSelected(itemId) {
+  return (dispatch) => {
+    dispatch({
+      type: t.ITEM_SELECTED,
+      payload: itemId,
+    })
   }
 }

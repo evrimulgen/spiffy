@@ -6,7 +6,7 @@ import {
 	TextInput,
 } from 'react-native';
 import { connect } from 'react-redux'
-import { keywordChanged } from '../actions'
+import { keywordChanged, itemSelected } from '../actions'
 import SearchPure from '../components/Search'
 
 class Search extends Component {
@@ -22,7 +22,7 @@ class Search extends Component {
 
 	onItemSelected(itemId) {
 		console.log(itemId+' selected')
-		//this.props.dispatch(itemSelected(itemId))
+		this.props.dispatch(itemSelected(itemId))
 	}
 
 	render() {
@@ -30,7 +30,7 @@ class Search extends Component {
 			<SearchPure
 				onKeywordChanged={this.onKeywordChanged}
 				onItemSelected={this.onItemSelected}
-				videos={this.props.videos}
+				videos={this.props.results.items}
 			/>
     )
   }
