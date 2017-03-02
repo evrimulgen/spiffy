@@ -38,7 +38,7 @@ export function createPlaylist(title, accessToken) {
     .catch(error => console.log(error))
 }
 
-export function addVideo({ playlistId, videoId }, accessToken) {
+export function addVideo(playlistId, videoId, accessToken) {
   const ITEM_URL = 'https://www.googleapis.com/youtube/v3/playlistItems'
   const ITEM_PARAMS = {
     key: config.YOUTUBE_KEY,
@@ -53,11 +53,15 @@ export function addVideo({ playlistId, videoId }, accessToken) {
     body: JSON.stringify({
       snippet: {
         playlistId: playlistId,
-        ressourceId: {
+        resourceId: {
           kind: 'youtube#video',
           videoId: videoId,
         }
       }
     })
   }
+  console.log(request)
+  return fetch(makeQuery(ITEM_URL, ITEM_PARAMS), request)
+    .then(response => response.json())
+    .catch(error => console.log(error))
 }
