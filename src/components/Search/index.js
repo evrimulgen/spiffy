@@ -18,8 +18,8 @@ function SearchPure(props) {
         />
       </View>
       <VideosList
-        videos={props.videos} 
-        onItemSelected={props.itemSelected}
+        videos={props.videos}
+        onItemSelected={props.onItemSelected}
       />
     </View>
   )

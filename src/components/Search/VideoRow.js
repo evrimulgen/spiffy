@@ -4,7 +4,7 @@ import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
 function VideosRow(props) {
   const thumbnail = props.snippet.thumbnails.default
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={props.onRowPressed}>
       <View style={styles.container}>
         <Image
           style={{ width: thumbnail.width, height: thumbnail.height }}

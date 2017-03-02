@@ -27,14 +27,9 @@ class VideoList extends React.Component {
     this.updateDatasource(nextProps.videos)
   }
 
-  pressRow(rowId) {
-    console.log(rowId+' pressed')
-    Actions.station()
-  }
-
   renderRow(data) {
     return (
-      <VideoRow {...data} onPress={() => this.pressRow(data.id.videoId)} />
+      <VideoRow {...data} onRowPressed={() => this.props.onItemSelected(data.id.videoId)} />
     )
   }
 
