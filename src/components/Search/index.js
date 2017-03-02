@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
-import VideosList from '../components/VideoList'
+import VideosList from './VideoList'
 
 const propTypes = {}
 const defaultProps = {}
@@ -17,7 +17,10 @@ function SearchPure(props) {
           placeholder="Search on YouTube"
         />
       </View>
-      <VideosList videos={props.videos} />
+      <VideosList
+        videos={props.videos} 
+        onItemSelected={props.itemSelected}
+      />
     </View>
   )
 }

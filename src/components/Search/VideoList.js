@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { View, ListView, StyleSheet, Text } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import VideoRow from './VideoRow'
-import { updateDatasource } from '../utils'
+import { updateDatasource } from '../../utils'
 
 const propTypes = {
   videos: PropTypes.array,
