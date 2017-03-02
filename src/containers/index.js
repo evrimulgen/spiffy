@@ -18,10 +18,10 @@ class MyRouter extends Component {
   render() {
     return (
       <Router>
-        <Scene key="root" tabs >
-          <Scene key="search" component={Search} hideNavBar />
+        <Scene key="root" hideNavBar>
           <Scene key="createStation" component={CreateStation} hideNavBar />
           <Scene key="station" component={Station} hideNavBar />
+          <Scene key="search" component={Search} hideNavBar />
           <Scene key="tinder" component={Tinder} hideNavBar />
         </Scene>
       </Router>

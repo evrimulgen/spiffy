@@ -16,3 +16,9 @@ export const createStation = {
 export const login = {
   USER_LOGGED_IN: 'USER_LOGGED_IN',
 }
+
+export const station = {
+  ADD_VIDEO_REQUEST: 'ADD_VIDEO_REQUEST',
+  ADD_VIDEO_SUCCESS: 'ADD_VIDEO_SUCCESS',
+  ADD_VIDEO_FAILURE: 'ADD_VIDEO_FAILURE',
+}

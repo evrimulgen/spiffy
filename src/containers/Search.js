@@ -21,7 +21,6 @@ class Search extends Component {
 	}
 
 	onItemSelected(itemId) {
-		console.log(itemId+' selected')
 		this.props.dispatch(itemSelected(itemId))
 	}
 

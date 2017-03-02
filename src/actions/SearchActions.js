@@ -1,5 +1,7 @@
+import { Actions } from 'react-native-router-flux'
 import { search as t } from './Types'
 import { search } from '../utils/YoutubeApi'
+import { addVideo } from '.'
 
 export function keywordChanged(keyword) {
   return (dispatch) => {
@@ -29,5 +31,6 @@ export function itemSelected(itemId) {
       type: t.ITEM_SELECTED,
       payload: itemId,
     })
+    dispatch(addVideo(itemId))
   }
 }
