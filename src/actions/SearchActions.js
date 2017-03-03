@@ -15,7 +15,7 @@ export function keywordChanged(keyword) {
     search(keyword)
       .then(response => dispatch({
         type: t.FETCH_VIDEOS_SUCCESS,
-        payload: response.items,
+        payload: response,
       }))
       .catch(error => dispatch({
         type: t.FETCH_VIDEOS_FAILURE,

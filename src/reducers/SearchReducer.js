@@ -10,20 +10,26 @@ function keyword(state = '', action) {
   }
 }
 
-const initialResults = {
-  fetching: false,
-  items: [],
-}
-
-function results(state = initialResults, action) {
+function videos(state = [], action) {
   switch (action.type) {
-    case t.FETCH_VIDEOS_REQUEST:
-      return { ...state, fetching: true }
     case t.FETCH_VIDEOS_SUCCESS:
-      return { ...state, fetching: false, items: action.payload }
+      return action.payload
     case t.FETCH_VIDEOS_FAILURE:
       console.error(action.payload)
-      return { ...state, fetching: false }
+      return state
+    default:
+      return state
+  }
+}
+
+function fetching(state = false, action) {
+  switch (action.type) {
+    case t.FETCH_VIDEOS_REQUEST:
+      return true
+    case t.FETCH_VIDEOS_SUCCESS:
+      return false
+    case t.FETCH_VIDEOS_FAILURE:
+      return false
     default:
       return state
   }
@@ -41,5 +47,6 @@ function selectedItemId(state = '', action) {
 export default combineReducers({
   keyword,
   selectedItemId,
-  results,
+  videos,
+  fetching,
 })

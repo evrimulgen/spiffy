@@ -13,6 +13,13 @@ export function search(keyword) {
   return fetch(makeQuery(SEARCH_URL, SEARCH_PARAMS))
     .then(response => response.json())
     .catch(error => console.log(error))
+    .then(response => response.items.map(v => ({
+        id: v.id.videoId,
+        title: v.snippet.title,
+        channelTitle: v.snippet.channelTitle,
+        thumbnail: v.snippet.thumbnails.default,
+      })
+    ))
 }
 
 export function createPlaylist(title, accessToken) {

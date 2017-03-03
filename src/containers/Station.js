@@ -8,8 +8,11 @@ const defaultProps = {}
 
 class Station extends Component {
   addSong() {
-    console.log("add song")
     Actions.search()
+  }
+
+  onItemSelected(itemId) {
+    console.log(itemId+' selected')
   }
 
   render() {
@@ -17,6 +20,7 @@ class Station extends Component {
       <StationPure
         stationTitle={this.props.title}
         addSong={this.addSong}
+        onItemSelected={this.onItemSelected}
       />
     )
   }

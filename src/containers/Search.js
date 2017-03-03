@@ -29,13 +29,14 @@ class Search extends Component {
 			<SearchPure
 				onKeywordChanged={this.onKeywordChanged}
 				onItemSelected={this.onItemSelected}
-				videos={this.props.results.items}
+				videos={this.props.videos}
 			/>
     )
   }
 }
 
 const mapStateToProps = (state) => {
+	console.log(state.search)
 	return state.search
 }
 

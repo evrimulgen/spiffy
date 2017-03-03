@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import VideoList from './VideoList'
 
 const propTypes = {}
 const defaultProps = {}
@@ -11,6 +12,10 @@ function StationPure(props) {
       <TouchableOpacity onPress={props.addSong}>
         <Text>Add song</Text>
       </TouchableOpacity>
+      <VideoList
+        videos={props.videos}
+        onItemSelected={props.onItemSelected}
+      />
     </View>
   )
 }
