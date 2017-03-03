@@ -2,35 +2,39 @@ import config from '../config'
 import store from '../store'
 import { makeQuery } from '.'
 
+const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
+const PLAYLIST_URL = 'https://www.googleapis.com/youtube/v3/playlists'
+const ITEM_URL = 'https://www.googleapis.com/youtube/v3/playlistItems'
+
+function getParams() {
+  const { user: { accessToken } } = store.getState()
+  const params = {
+    key: config.YOUTUBE_KEY,
+    access_token: accessToken,
+    part: 'snippet',
+  }
+  return params
+}
+
 export function search(keyword) {
-  const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
-  const SEARCH_PARAMS = {
-    key: config.YOUTUBE_KEY,  // Key needed to use Youtube API
-    part: 'snippet',  // Specifies which part of resources we want
+  const params = {
+    ...getParams(),
     topicId: '/m/04rlf',  // Topic associated with music
     type: 'video',  // Only displays videos
     q: keyword,  // Keyword to search
   }
-  return fetch(makeQuery(SEARCH_URL, SEARCH_PARAMS))
+  return fetch(makeQuery(SEARCH_URL, params))
     .then(response => response.json())
     .catch(error => console.log(error))
     .then(response => response.items.map(v => ({
-        id: v.id.videoId,
-        title: v.snippet.title,
-        channelTitle: v.snippet.channelTitle,
-        thumbnail: v.snippet.thumbnails.default,
-      })
-    ))
+      id: v.id.videoId,
+      title: v.snippet.title,
+      channelTitle: v.snippet.channelTitle,
+      thumbnail: v.snippet.thumbnails.default,
+    })))
 }
 
 export function createPlaylist(title) {
-  const accessToken = store.getState().user.accessToken
-  const PLAYLIST_URL = 'https://www.googleapis.com/youtube/v3/playlists'
-  const PLAYLIST_PARAMS = {
-    key: config.YOUTUBE_KEY,
-    part: 'snippet',
-    access_token: accessToken,
-  }
   const request = {
     method: 'POST',
     headers: {
@@ -42,19 +46,13 @@ export function createPlaylist(title) {
       },
     })
   }
-  return fetch(makeQuery(PLAYLIST_URL, PLAYLIST_PARAMS), request)
+  return fetch(makeQuery(PLAYLIST_URL, getParams()), request)
     .then(response => response.json())
     .catch(error => console.log(error))
+    .then(response => { id: response.id })
 }
 
 export function addVideo(playlistId, videoId) {
-  const accessToken = store.getState().user.accessToken
-  const ITEM_URL = 'https://www.googleapis.com/youtube/v3/playlistItems'
-  const ITEM_PARAMS = {
-    key: config.YOUTUBE_KEY,
-    part: 'snippet',
-    access_token: accessToken,
-  }
   const request = {
     method: 'POST',
     headers: {
@@ -70,7 +68,42 @@ export function addVideo(playlistId, videoId) {
       }
     })
   }
-  return fetch(makeQuery(ITEM_URL, ITEM_PARAMS), request)
+  return fetch(makeQuery(ITEM_URL, getParams()), request)
     .then(response => response.json())
     .catch(error => console.log(error))
 }
+
+export function getAllPlaylists() {
+  let playlists = []
+
+  function format(response) {
+    const playlists = response.items.map(p => ({
+      id: p.id,
+      title: p.snippet.title
+    }))
+    return { nextPageToken: response.nextPageToken, playlists }
+  }
+
+  function getPlaylists(pageToken) {
+    const params = {
+      ...getParams(),
+      mine: true,
+      maxResults: 50,
+      pageToken,
+    }
+    return fetch(makeQuery(PLAYLIST_URL, params))
+      .then(response => response.json())
+      .catch(error => console.log(error))
+      .then(format)
+      .then((response) => {
+        playlists = playlists.concat(response.playlists)
+        if (response.nextPageToken) {
+          return getPlaylists(response.nextPageToken)
+        } else {
+          return playlists
+        }
+      })
+    }
+
+    return getPlaylists('')
+  }
