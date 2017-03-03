@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Scene, Router } from 'react-native-router-flux'
 import { userLoggedIn, setSpiffyStation } from '../actions'
 import { googleSignIn } from '../utils/Login'
-import { getSpiffyStation } from '../utils'
+import { getSpiffyId } from '../utils'
 import Tinder from './Tinder'
 import Search from './Search'
 import CreateStation from './CreateStation'
@@ -14,7 +14,7 @@ class MyRouter extends Component {
     googleSignIn()
       .then(user => this.props.dispatch(userLoggedIn(user)))
       .catch(() => googleSignIn())
-      .then(() => getSpiffyStation())
+      .then(() => getSpiffyId())
       .then(spiffyId => this.props.dispatch(setSpiffyStation(spiffyId)))
   }
 
