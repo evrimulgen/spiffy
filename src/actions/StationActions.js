@@ -1,6 +1,6 @@
 import { Actions } from 'react-native-router-flux'
 import { station as t } from './Types'
-import { addVideo } from '../utils/YoutubeApi'
+import { addVideo, getAllVideos } from '../utils/YoutubeApi'
 
 export function videoAdded(videoId) {
   return (dispatch, getState) => {
@@ -22,9 +22,24 @@ export function videoAdded(videoId) {
   }
 }
 
-export function setSpiffyStation(spiffyId) {
-  return {
-    type: t.SET_SPIFFY_STATION,
-    payload: spiffyId,
+export function setStationId(id) {
+  return (dispatch) => {
+    dispatch({
+      type: t.SET_ID,
+      payload: id,
+    })
+    dispatch(fetchVideos())
+  }
+}
+
+export function fetchVideos() {
+  return (dispatch, getState) => {
+    const { station: { id } } = getState()
+    dispatch({
+      type: t.FETCH_VIDEOS_REQUEST,
+    })
+    getAllVideos(id)
+      .then(videos => console.log(videos))
+      .catch(error => console.log(error))
   }
 }

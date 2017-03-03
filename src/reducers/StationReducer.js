@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import { station as t } from '../actions/Types'
 
-function spiffyId(state = '', action) {
+function id(state = '', action) {
   switch (action.type) {
-    case t.SET_SPIFFY_STATION:
+    case t.SET_ID:
       return action.payload
     default:
       return state
@@ -11,5 +11,5 @@ function spiffyId(state = '', action) {
 }
 
 export default combineReducers({
-  spiffyId,
+  id,
 })

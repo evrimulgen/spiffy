@@ -1,10 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import StationPure from '../components/StationPure'
 import { Actions } from 'react-native-router-flux'
+import StationPure from '../components/StationPure'
 
-const propTypes = {}
-const defaultProps = {}
+const propTypes = {
+  videos: PropTypes.array
+}
+
+const defaultProps = {
+  videos: []
+}
 
 class Station extends Component {
   addSong() {
@@ -21,6 +26,7 @@ class Station extends Component {
         stationTitle={this.props.title}
         addSong={this.addSong}
         onItemSelected={this.onItemSelected}
+        videos={this.props.videos}
       />
     )
   }
@@ -30,7 +36,7 @@ Station.propTypes = propTypes
 Station.defaultProps = defaultProps
 
 const mapStateToProps = (state) => {
-  return state.createStation
+  return state.station
 }
 
 export default connect(mapStateToProps)(Station)

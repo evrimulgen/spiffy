@@ -116,7 +116,7 @@ export function getAllPlaylists() {
       const videos = response.items.map(v => ({
         id: v.id,
         thumbnail: v.snippet.thumbnails.default,
-        title: v.title,
+        title: v.snippet.title,
       }))
       return { videos, nextPageToken: response.nextPageToken }
     }
@@ -132,8 +132,8 @@ export function getAllPlaylists() {
       return fetch(makeQuery(ITEM_URL, params))
         .then(response => response.json())
         .catch(error => console.log(error))
-        .catch(format)
-        .then((videos) => {
+        .then(format)
+        .then((response) => {
           videos = videos.concat(response.videos)
           if (response.nextPageToken) {
             return getVideos(response.nextPageToken)
