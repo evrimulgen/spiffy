@@ -21,3 +21,10 @@ export function videoAdded(videoId) {
       .then(() => Actions.pop())
   }
 }
+
+export function setSpiffyStation(spiffyId) {
+  return {
+    type: t.SET_SPIFFY_STATION,
+    payload: spiffyId,
+  }
+}

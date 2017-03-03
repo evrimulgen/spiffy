@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Scene, Router } from 'react-native-router-flux'
-import { userLoggedIn } from '../actions'
+import { userLoggedIn, setSpiffyStation } from '../actions'
 import { googleSignIn } from '../utils/Login'
 import { getSpiffyStation } from '../utils'
 import Tinder from './Tinder'
@@ -15,16 +15,16 @@ class MyRouter extends Component {
       .then(user => this.props.dispatch(userLoggedIn(user)))
       .catch(() => googleSignIn())
       .then(() => getSpiffyStation())
-      .then(spiffyId => console.log(spiffyId))
+      .then(spiffyId => this.props.dispatch(setSpiffyStation(spiffyId)))
   }
 
   render() {
     return (
       <Router>
         <Scene key="root" hideNavBar>
-          <Scene key="createStation" component={CreateStation} hideNavBar />
-          <Scene key="search" component={Search} hideNavBar />
           <Scene key="station" component={Station} hideNavBar />
+          <Scene key="search" component={Search} hideNavBar />
+          <Scene key="createStation" component={CreateStation} hideNavBar />
           <Scene key="tinder" component={Tinder} hideNavBar />
         </Scene>
       </Router>
