@@ -18,9 +18,9 @@ class MyRouter extends Component {
     return (
       <Router>
         <Scene key="root" hideNavBar>
+          <Scene key="createStation" component={CreateStation} hideNavBar />
           <Scene key="search" component={Search} hideNavBar />
           <Scene key="station" component={Station} hideNavBar />
-          <Scene key="createStation" component={CreateStation} hideNavBar />
           <Scene key="tinder" component={Tinder} hideNavBar />
         </Scene>
       </Router>

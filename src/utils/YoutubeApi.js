@@ -1,4 +1,5 @@
 import config from '../config'
+import store from '../store'
 import { makeQuery } from '.'
 
 export function search(keyword) {
@@ -22,7 +23,8 @@ export function search(keyword) {
     ))
 }
 
-export function createPlaylist(title, accessToken) {
+export function createPlaylist(title) {
+  const accessToken = store.getState().user.accessToken
   const PLAYLIST_URL = 'https://www.googleapis.com/youtube/v3/playlists'
   const PLAYLIST_PARAMS = {
     key: config.YOUTUBE_KEY,
@@ -45,7 +47,8 @@ export function createPlaylist(title, accessToken) {
     .catch(error => console.log(error))
 }
 
-export function addVideo(playlistId, videoId, accessToken) {
+export function addVideo(playlistId, videoId) {
+  const accessToken = store.getState().user.accessToken
   const ITEM_URL = 'https://www.googleapis.com/youtube/v3/playlistItems'
   const ITEM_PARAMS = {
     key: config.YOUTUBE_KEY,

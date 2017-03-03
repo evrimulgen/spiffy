@@ -7,8 +7,8 @@ export function videoAdded(videoId) {
     dispatch({
       type: t.ADD_VIDEO_REQUEST,
     })
-    const { user: { accessToken }, createStation: { id } } = getState()
-    addVideo(id, videoId, accessToken)
+    const { createStation: { id } } = getState()
+    addVideo(id, videoId)
       .then(video => dispatch({
         type: t.ADD_VIDEO_SUCCESS,
         payload: video,

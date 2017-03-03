@@ -10,12 +10,11 @@ export function titleChanged(title) {
 }
 
 export function stationCreated(title) {
-  return (dispatch, getState) => {
-    const { user: { accessToken } } = getState()
+  return (dispatch) => {
     dispatch({
       type: t.CREATE_STATION_REQUEST,
     })
-    createPlaylist(title, accessToken)
+    createPlaylist(title)
       .then(response => dispatch({
         type: t.CREATE_STATION_SUCCESS,
         payload: response,
