@@ -11,5 +11,7 @@ export function googleSignIn() {
       ],
     })
       .then(() => GoogleSignIn.signInPromise())
+      .catch(() => googleSignIn())
+      .then(user => ({ accessToken: user.accessToken }))
   )
 }
