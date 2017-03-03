@@ -91,6 +91,7 @@ export function getAllPlaylists() {
       maxResults: 50,
       pageToken,
     }
+
     return fetch(makeQuery(PLAYLIST_URL, params))
       .then(response => response.json())
       .catch(error => console.log(error))
@@ -106,4 +107,41 @@ export function getAllPlaylists() {
     }
 
     return getPlaylists('')
+  }
+
+  export function getAllVideos(playlistId) {
+    let videos = []
+
+    function format(response) {
+      const videos = response.items.map(v => ({
+        id: v.id,
+        thumbnail: v.snippet.thumbnails.default,
+        title: v.title,
+      }))
+      return { videos, nextPageToken: response.nextPageToken }
+    }
+
+    function getVideos(pageToken) {
+      const params = {
+        ...getParams(),
+        maxResults: 50,
+        playlistId,
+        pageToken,
+      }
+
+      return fetch(makeQuery(ITEM_URL, params))
+        .then(response => response.json())
+        .catch(error => console.log(error))
+        .catch(format)
+        .then((videos) => {
+          videos = videos.concat(response.videos)
+          if (response.nextPageToken) {
+            return getVideos(response.nextPageToken)
+          } else {
+            return videos
+          }
+        })
+    }
+
+    return getVideos('')
   }
