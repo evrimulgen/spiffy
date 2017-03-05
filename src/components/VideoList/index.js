@@ -20,29 +20,26 @@ class VideoList extends React.Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount')
+    //console.log('componentWillMount')
     //console.log(this.props.videos)
     this.updateDatasource(this.props.videos)
-    console.log(this.state)
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps')
+    //console.log('componentWillReceiveProps')
     //console.log(nextProps.videos)
     this.updateDatasource(nextProps.videos)
-    console.log(this.state)
   }
 
   renderRow(video) {
-    console.log('renderRow')
+    //console.log('renderRow')
     return (
       <VideoRow {...video} onRowPressed={() => this.props.onItemSelected(video.id)} />
     )
   }
 
   render() {
-    console.log('render')
-    console.log(this.state.dataSource)
+    //console.log('render')
     return (
       <ListView
         enableEmptySections

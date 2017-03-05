@@ -13,6 +13,13 @@ const defaultProps = {
 }
 
 class Station extends Component {
+  constructor(props) {
+    super(props)
+    setInterval(() => {
+      props.dispatch(fetchVideos())
+    }, 5000)
+  }
+  
   addSong() {
     Actions.search()
   }
@@ -22,8 +29,6 @@ class Station extends Component {
   }
 
   render() {
-    console.log('render station')
-    console.log(this.props.videos)
     return (
       <StationPure
         stationTitle={this.props.title}

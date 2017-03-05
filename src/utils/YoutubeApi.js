@@ -49,7 +49,7 @@ export function createPlaylist(title) {
   return fetch(makeQuery(PLAYLIST_URL, getParams()), request)
     .then(response => response.json())
     .catch(error => console.log(error))
-    .then(response => { id: response.id })
+    .then(response => response.id)
 }
 
 export function addVideo(playlistId, videoId) {

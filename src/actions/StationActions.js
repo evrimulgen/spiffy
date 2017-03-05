@@ -10,7 +10,6 @@ export function initStation() {
         type: t.SET_STATION_ID,
         payload: id,
       }))
-      .then(() => dispatch(fetchVideos()))
     }
 }
 
@@ -50,5 +49,6 @@ export function videoAdded(videoId) {
         error: true,
       }))
       .then(() => Actions.pop())
+      .then(() => dispatch(fetchVideos()))
   }
 }
