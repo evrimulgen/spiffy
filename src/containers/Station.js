@@ -13,7 +13,7 @@ const defaultProps = {
 
 class Station extends Component {
   addSong() {
-    Actions.search()
+    Actions.search({ type: 'reset' })
   }
 
   onItemSelected(itemId) {

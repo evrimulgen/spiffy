@@ -39,7 +39,14 @@ export function fetchVideos() {
       type: t.FETCH_VIDEOS_REQUEST,
     })
     getAllVideos(id)
-      .then(videos => console.log(videos))
-      .catch(error => console.log(error))
+      .then(videos => dispatch({
+        type: t.FETCH_VIDEOS_SUCCESS,
+        payload: videos,
+      }))
+      .catch(error => dispatch({
+        type: t.FETCH_VIDEOS_FAILURE,
+        payload: error,
+        error: true,
+      }))
   }
 }

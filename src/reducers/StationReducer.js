@@ -10,6 +10,16 @@ function id(state = '', action) {
   }
 }
 
+function videos(state = [], action) {
+  switch (action.type) {
+    case t.FETCH_VIDEOS_SUCCESS:
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
   id,
+  videos,
 })
