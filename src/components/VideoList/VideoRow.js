@@ -11,7 +11,7 @@ const defaultProps = {
   title: '',
 }
 
-function VideosRow(props) {
+function VideoRow(props) {
   return (
     <TouchableOpacity onPress={props.onRowPressed}>
       <View style={styles.container}>
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default VideosRow
+export default VideoRow

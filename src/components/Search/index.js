@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
-import SearchList from './SearchList'
+import SearchList from '../VideoList'
 
 const propTypes = {
   videos: PropTypes.array,
