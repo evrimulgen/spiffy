@@ -4,10 +4,10 @@ import { addVideo, getAllVideos } from '../utils/YoutubeApi'
 
 export function videoAdded(videoId) {
   return (dispatch, getState) => {
+    const { station: { id } } = getState()
     dispatch({
       type: t.ADD_VIDEO_REQUEST,
     })
-    const { createStation: { id } } = getState()
     addVideo(id, videoId)
       .then(video => dispatch({
         type: t.ADD_VIDEO_SUCCESS,

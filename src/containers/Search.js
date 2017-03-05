@@ -36,7 +36,6 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state.search)
 	return state.search
 }
 

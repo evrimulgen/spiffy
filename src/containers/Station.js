@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
-import StationPure from '../components/StationPure'
+import { fetchVideos } from '../actions/StationActions'
+import StationPure from '../components/Station'
 
 const propTypes = {
   videos: PropTypes.array
@@ -12,8 +13,12 @@ const defaultProps = {
 }
 
 class Station extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchVideos())
+  }
+
   addSong() {
-    Actions.search({ type: 'reset' })
+    Actions.search()
   }
 
   onItemSelected(itemId) {

@@ -5,6 +5,8 @@ function keyword(state = '', action) {
   switch (action.type) {
     case t.KEYWORD_CHANGED:
       return action.payload
+    case t.SEARCH_RESET:
+      return ''
     default:
       return state
   }
@@ -17,6 +19,8 @@ function videos(state = [], action) {
     case t.FETCH_VIDEOS_FAILURE:
       console.error(action.payload)
       return state
+    case t.SEARCH_RESET:
+      return []
     default:
       return state
   }
@@ -39,6 +43,8 @@ function selectedItemId(state = '', action) {
   switch (action.type) {
     case t.ITEM_SELECTED:
       return action.payload
+    case t.SEARCH_RESET:
+      return ''
     default:
       return state
   }
