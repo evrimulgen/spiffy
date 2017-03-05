@@ -18,11 +18,11 @@ class Station extends Component {
     this.addSong = this.addSong.bind(this)
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.props.dispatch(fetchVideos())
-    }, 1000)
-  }
+  //componentDidMount() {
+  //  setInterval(() => {
+  //    this.props.dispatch(fetchVideos())
+  //  }, 1000)
+  //}
 
   addSong() {
     this.props.dispatch({ type: 'SEARCH_RESET' })

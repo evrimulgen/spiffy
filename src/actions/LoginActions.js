@@ -1,8 +1,18 @@
+import firebase from 'firebase'
 import { login as t } from './Types'
 
 export function userLoggedIn(user) {
-  return {
-    type: t.USER_LOGGED_IN,
-    payload: user,
+  return (dispatch) => {
+    dispatch({
+      type: t.USER_LOGGED_IN,
+      payload: user,
+    })
+    //firebase.auth().signInWithCustomToken(user.accessToken)
+    firebase.auth().signInAnonymously()
+      .then(() => console.log('Firebase authentication ok'))
+      .catch((error) => {
+        console.log('Firebase authentication failed')
+        console.log(error)
+      })
   }
 }
