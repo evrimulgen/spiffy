@@ -10,6 +10,7 @@ export function initStation() {
         type: t.SET_STATION_ID,
         payload: id,
       }))
+      .then(() => dispatch(fetchVideos()))
     }
 }
 

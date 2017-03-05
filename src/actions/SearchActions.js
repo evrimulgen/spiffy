@@ -32,8 +32,5 @@ export function itemSelected(itemId) {
       payload: itemId,
     })
     dispatch(videoAdded(itemId))
-    dispatch({
-      type: t.SEARCH_RESET,
-    })
   }
 }

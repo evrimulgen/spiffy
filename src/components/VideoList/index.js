@@ -41,12 +41,14 @@ class VideoList extends React.Component {
   render() {
     //console.log('render')
     return (
-      <ListView
-        enableEmptySections
-        style={styles.container}
-        dataSource={this.state.dataSource}
-        renderRow={this.renderRow}
-      />
+      <View style={{ flex: 1 }}>
+        <ListView
+          enableEmptySections
+          style={styles.container}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+        />
+      </View>
     )
   }
 }

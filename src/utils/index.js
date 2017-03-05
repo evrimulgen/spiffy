@@ -3,7 +3,7 @@ import { getAllPlaylists, createPlaylist } from './YoutubeApi'
 
 // Generic function to update ListView's data sources
 export function updateDatasource(data = []) {
-  const rowHasChanged = (r1, r2) => r1 !== r2
+  const rowHasChanged = (r1, r2) => true
   const ds = new ListView.DataSource({ rowHasChanged })
   this.setState({
     dataSource: ds.cloneWithRows(data)

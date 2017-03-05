@@ -7,13 +7,13 @@ const propTypes = {
 }
 
 const defaultProps = {
-  //thumbnail: { url: '', width: 0, height: 0 },
-  //title: '',
+  thumbnail: { url: '', width: 0, height: 0 },
+  title: '',
 }
 
 function VideoRow(props) {
   return (
-    <TouchableOpacity onPress={props.onRowPressed}>
+    <TouchableOpacity style={{ flex: 1 }} onPress={props.onRowPressed}>
       <View style={styles.container}>
         <Image
           style={{ width: props.thumbnail.width, height: props.thumbnail.height }}
@@ -30,6 +30,7 @@ function VideoRow(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    minHeight: 100,
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',

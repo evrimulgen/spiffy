@@ -15,12 +15,14 @@ const defaultProps = {
 class Station extends Component {
   constructor(props) {
     super(props)
-    setInterval(() => {
-      props.dispatch(fetchVideos())
-    }, 5000)
+    this.addSong = this.addSong.bind(this)
+    //setInterval(() => {
+    //  props.dispatch(fetchVideos())
+    //}, 5000)
   }
-  
+
   addSong() {
+    this.props.dispatch({ type: 'SEARCH_RESET' })
     Actions.search()
   }
 
