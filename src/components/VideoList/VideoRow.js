@@ -13,7 +13,7 @@ const defaultProps = {
 
 function VideoRow(props) {
   return (
-    <TouchableOpacity style={{ flex: 1 }} onPress={props.onRowPressed}>
+    <TouchableOpacity style={styles.touchable} onPress={props.onRowPressed}>
       <View style={styles.container}>
         <Image
           style={{ width: props.thumbnail.width, height: props.thumbnail.height }}
@@ -28,13 +28,14 @@ function VideoRow(props) {
 }
 
 const styles = StyleSheet.create({
+  touchable: {
+    flex: 1,  // Without it, there is a huge displaying bug
+  },
   container: {
     flex: 1,
-    minHeight: 100,
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgb(129, 187, 115)'
   },
   text: {
     marginLeft: 12,

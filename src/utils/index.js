@@ -3,7 +3,7 @@ import { getAllPlaylists, createPlaylist } from './YoutubeApi'
 
 // Generic function to update ListView's data sources
 export function updateDatasource(data = []) {
-  const rowHasChanged = (r1, r2) => true
+  const rowHasChanged = (r1, r2) => r1 !== r2
   const ds = new ListView.DataSource({ rowHasChanged })
   this.setState({
     dataSource: ds.cloneWithRows(data)
@@ -20,7 +20,7 @@ export function makeQuery(baseURL, params) {
 
 // Return the playlist id corresponding of the Spiffy Station
 export function getSpiffyId() {
-  const SPIFFY = 'Spiffy4'
+  const SPIFFY = 'Spiffy2'
   return getAllPlaylists()
     .then((playlists) => {
       for (var p of playlists) {
