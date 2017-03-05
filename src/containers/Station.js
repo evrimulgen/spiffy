@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
-import { fetchVideos } from '../actions/StationActions'
+import { initStation, fetchVideos } from '../actions/StationActions'
 import StationPure from '../components/Station'
 
 const propTypes = {
@@ -13,10 +13,6 @@ const defaultProps = {
 }
 
 class Station extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchVideos())
-  }
-
   addSong() {
     Actions.search()
   }
@@ -26,6 +22,8 @@ class Station extends Component {
   }
 
   render() {
+    console.log('render station')
+    console.log(this.props.videos)
     return (
       <StationPure
         stationTitle={this.props.title}

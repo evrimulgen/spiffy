@@ -3,7 +3,7 @@ import { station as t } from '../actions/Types'
 
 function id(state = '', action) {
   switch (action.type) {
-    case t.SET_ID:
+    case t.SET_STATION_ID:
       return action.payload
     default:
       return state

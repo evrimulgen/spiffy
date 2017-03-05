@@ -7,8 +7,8 @@ const propTypes = {
 }
 
 const defaultProps = {
-  thumbnail: { url: '', width: 0, height: 0 },
-  title: '',
+  //thumbnail: { url: '', width: 0, height: 0 },
+  //title: '',
 }
 
 function VideoRow(props) {
@@ -32,7 +32,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     flexDirection: 'row',
+    height: 100,
     alignItems: 'center',
+    backgroundColor: 'rgb(129, 187, 115)'
   },
   text: {
     marginLeft: 12,
