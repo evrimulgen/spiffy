@@ -1,5 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import YouTubePlayer from 'react-native-youtube'
+import config from '../../config'
 import VideoList from '../VideoList'
 
 const propTypes = {}
@@ -8,7 +10,16 @@ const defaultProps = {}
 function StationPure(props) {
   return (
     <View style={styles.container}>
-      <Text>Station title: {props.stationTitle}</Text>
+      <Text>{props.stationTitle}</Text>
+      <YouTubePlayer
+        play
+        playsInline
+        fs={false}
+        controls={2}
+        videoId="8oZwTQdZ1jA"
+        apiKey={config.YOUTUBE_KEY}
+        style={styles.youtube}
+      />
       <TouchableOpacity onPress={props.addSong}>
         <Text>Add song</Text>
       </TouchableOpacity>
@@ -25,6 +36,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'rgb(230, 108, 147)',
+  },
+  youtube: {
+    height: 169,
+    width: 300,
   },
 })
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import Youtube from './Youtube'
+import YoutubePlayer from './YoutubePlayer'
 import { HEIGHT, WIDTH }  from '../styles'
 
 class TinderCard extends Component {
 	render() {
 		return (
 			<View style={styles.card}>
-                <Youtube />
+				<YoutubePlayer />
 			</View>
 		)
 	}
@@ -15,8 +15,8 @@ class TinderCard extends Component {
 
 const styles = {
 	card: {
-        height: HEIGHT,
-        width: WIDTH,
+		height: HEIGHT,
+		width: WIDTH,
 		justifyContent: 'center',
 		alignItems: 'center',
 	}

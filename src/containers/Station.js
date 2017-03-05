@@ -16,9 +16,12 @@ class Station extends Component {
   constructor(props) {
     super(props)
     this.addSong = this.addSong.bind(this)
-    //setInterval(() => {
-    //  props.dispatch(fetchVideos())
-    //}, 5000)
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.props.dispatch(fetchVideos())
+    }, 1000)
   }
 
   addSong() {
