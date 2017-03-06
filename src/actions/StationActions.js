@@ -1,11 +1,13 @@
 import { Actions } from 'react-native-router-flux'
 import { station as t } from './types'
 import {
-  addVideo,
   getAllVideos,
+} from '../utils/youtubeAPI'
+import {
+  addVideo,
   registerStation,
   createStation
-} from '../utils'
+} from '../utils/firebase'
 
 export function initStation() {
   return (dispatch) => {
@@ -36,7 +38,7 @@ export function stationCreate() {
         payload: error,
         error: true,
       }))
-      //.then(() => Actions.station())
+      .then(() => Actions.station({ host: true }))
   }
 }
 
@@ -59,16 +61,15 @@ export function fetchVideos() {
   }
 }
 
-export function videoAdded(videoId) {
+export function videoAdded(video) {
   return (dispatch, getState) => {
     const { station: { id } } = getState()
     dispatch({
       type: t.ADD_VIDEO_REQUEST,
     })
-    addVideo(id, videoId)
-      .then(video => dispatch({
+    addVideo(id, video)
+      .then(() => dispatch({
         type: t.ADD_VIDEO_SUCCESS,
-        payload: video,
       }))
       .catch(error => dispatch({
         type: t.ADD_VIDEO_FAILURE,
@@ -76,6 +77,5 @@ export function videoAdded(videoId) {
         error: true,
       }))
       .then(() => Actions.pop())
-      .then(() => dispatch(fetchVideos()))
   }
 }

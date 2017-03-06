@@ -1,10 +1,6 @@
 import { ListView } from 'react-native'
 import { getAllPlaylists, createPlaylist } from './youtubeAPI'
 
-export * from './login'
-export * from './youtubeAPI'
-export * from './firebase'
-
 // Generic function to update ListView's data sources
 export function updateDatasource(data = []) {
   const rowHasChanged = (r1, r2) => r1 !== r2

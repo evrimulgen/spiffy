@@ -29,7 +29,7 @@ class List extends Component {
 
   renderRow(item) {
     return (
-      <Item {...item} onItemSelected={() => this.props.onItemSelected(item.id)} />
+      <Item {...item} onItemSelected={() => this.props.onItemSelected(item)} />
     )
   }
 

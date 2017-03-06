@@ -18,7 +18,7 @@ function getParams() {
 
 function formatItem(item) {
   return {
-    id: item.id,
+    id: (item.id.kind == 'youtube#video') ? item.id.videoId : item.id.playlistId,
     title: item.snippet.title,
     thumbnail: item.snippet.thumbnails.default,
     channelTitle: item.snippet.channelTitle,

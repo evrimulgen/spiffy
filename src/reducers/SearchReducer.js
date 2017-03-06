@@ -39,7 +39,7 @@ function fetching(state = false, action) {
   }
 }
 
-function selectedItemId(state = '', action) {
+function selectedItem(state = {}, action) {
   switch (action.type) {
     case t.ITEM_SELECTED:
       return action.payload
@@ -52,7 +52,7 @@ function selectedItemId(state = '', action) {
 
 export default combineReducers({
   keyword,
-  selectedItemId,
+  selectedItem,
   results,
   fetching,
 })

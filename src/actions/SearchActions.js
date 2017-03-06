@@ -1,6 +1,6 @@
 import { Actions } from 'react-native-router-flux'
 import { search as t } from './types'
-import { search } from '../utils'
+import { search } from '../utils/youtubeAPI'
 import { videoAdded } from './StationActions'
 
 export function keywordChanged(keyword) {
@@ -25,14 +25,12 @@ export function keywordChanged(keyword) {
   }
 }
 
-export function itemSelected(itemId) {
+export function itemSelected(item) {
   return (dispatch) => {
-    const { kind, videoId, playlistId } = itemId
-    const id = (kind == 'youtube#video') ? videoId : playlistId
     dispatch({
       type: t.ITEM_SELECTED,
-      payload: id,
+      payload: item,
     })
-    dispatch(videoAdded(id))
+    dispatch(videoAdded(item))
   }
 }

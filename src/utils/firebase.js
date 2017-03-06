@@ -46,3 +46,7 @@ export function listAllStations(callback) {
     callback(stations)
   })
 }
+
+export function addVideo(stationId, video) {
+  return firebase.database().ref('stations/' + stationId + '/videos/').push(video)
+}
