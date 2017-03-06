@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
-import { initStation, fetchVideos } from '../actions/StationActions'
 import StationPure from '../components/Station'
 
 const propTypes = {

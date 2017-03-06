@@ -10,7 +10,7 @@ import Station from './Station'
 import ListStations from './ListStations'
 
 class MyRouter extends Component {
-  componentDidMount() {
+  componentWillMount() {
     googleSignIn()
       .then(user => this.props.dispatch(userLoggedIn(user)))
       .catch(() => googleSignIn())
