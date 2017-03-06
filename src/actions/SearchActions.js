@@ -1,7 +1,7 @@
 import { Actions } from 'react-native-router-flux'
-import { search as t } from './Types'
-import { search } from '../utils/YoutubeApi'
-import { videoAdded } from '.'
+import { search as t } from './types'
+import { search } from '../utils'
+import { videoAdded } from './StationActions'
 
 export function keywordChanged(keyword) {
   return (dispatch) => {

@@ -1,4 +1,4 @@
-import { station as t } from '../actions/Types'
+import { station as t } from '../actions/types'
 
 const INITIAL_STATE = {
   id: '',

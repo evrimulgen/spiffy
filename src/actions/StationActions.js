@@ -1,8 +1,11 @@
 import { Actions } from 'react-native-router-flux'
-import { station as t } from './Types'
-import { addVideo, getAllVideos } from '../utils/YoutubeApi'
-import { registerStation } from '../utils/firebase'
-import { createStation } from '../utils'
+import { station as t } from './types'
+import {
+  addVideo,
+  getAllVideos,
+  registerStation,
+  createStation
+} from '../utils'
 
 export function initStation() {
   return (dispatch) => {

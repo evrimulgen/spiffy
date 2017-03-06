@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { search as t } from '../actions/Types'
+import { search as t } from '../actions/types'
 
 function keyword(state = '', action) {
   switch (action.type) {

@@ -1,6 +1,6 @@
-import { createStation as t } from './Types'
-import { createPlaylist } from '../utils/YoutubeApi'
 import { Actions } from 'react-native-router-flux'
+import { createStation as t } from './types'
+import { createPlaylist } from '../utils'
 
 export function titleChanged(title) {
   return {

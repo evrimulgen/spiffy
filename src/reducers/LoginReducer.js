@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { login as t } from '../actions/Types'
+import { login as t } from '../actions/types'
 
 const INITIAL_STATE = {
   accessToken: '',

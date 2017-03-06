@@ -1,4 +1,4 @@
-import { createStation as t } from '../actions/Types'
+import { createStation as t } from '../actions/types'
 
 initialState = {
   title: '',

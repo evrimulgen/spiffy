@@ -1,6 +1,6 @@
 import firebase from 'firebase'
-import { login as t } from './Types'
-import { registerUser } from '../utils/firebase'
+import { login as t } from './types'
+import { registerUser } from '../utils'
 
 export function userLoggedIn(user) {
   return (dispatch) => {

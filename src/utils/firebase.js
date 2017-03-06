@@ -22,7 +22,7 @@ export function registerStation(station) {
 }
 
 export function getSpiffyStations() {
-  firebase.database().ref('stations')
+  return firebase.database().ref('stations')
     .once('value')
     .then(stations => stations.val())
     .then(stations => Object.keys(stations).map(k => stations[k]))
