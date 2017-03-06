@@ -11,9 +11,16 @@ class ListStations extends Component {
     this.props.dispatch(fetchStations())
   }
 
+  onStationSelected(stationId) {
+    console.log(stationId + ' pressed')
+  }
+
   render() {
     return (
-      <ListStationsPure stations={this.props.stations}/>
+      <ListStationsPure
+        stations={this.props.stations}
+        onStationSelected={this.onStationSelected}
+      />
     )
   }
 }
@@ -21,6 +28,8 @@ class ListStations extends Component {
 ListStations.propTypes = propTypes
 ListStations.defaultProps = defaultProps
 
-const mapStateToProps = (state) => state.stations
+const mapStateToProps = (state) => {
+  return { stations: state.stations }
+}
 
 export default connect(mapStateToProps)(ListStations)

@@ -1,10 +1,6 @@
 import { listStations as t } from '../actions/types'
 
-const INITIAL_STATE = {
-  stations: [],
-}
-
-function stations(state = INITIAL_STATE, action) {
+function stations(state = [], action) {
   switch (action.type) {
     case t.FETCH_STATIONS_SUCCESS:
       return action.payload
