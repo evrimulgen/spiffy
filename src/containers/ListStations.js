@@ -10,6 +10,7 @@ class ListStations extends Component {
   componentWillMount() {
     this.props.dispatch(fetchStations())
   }
+  
   render() {
     return (
       <ListStationsPure />
