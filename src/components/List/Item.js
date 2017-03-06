@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
+import { WIDTH } from '../../styles'
 
 const propTypes = {
   thumbnail: PropTypes.object,
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    width: WIDTH,
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',

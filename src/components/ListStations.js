@@ -8,7 +8,7 @@ const defaultProps = {}
 function ListStationPure(props) {
   return (
     <View style={styles.container}>
-      <Text>Bite</Text>
+      <Text>Current Spiffy Stations</Text>
       <StationList
         items={props.stations}
         onItemSelected={props.onStationSelected}
@@ -20,6 +20,7 @@ function ListStationPure(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     backgroundColor: 'rgb(230, 108, 147)',
   },
 })
