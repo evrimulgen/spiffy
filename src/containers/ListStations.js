@@ -22,7 +22,6 @@ class ListStations extends Component {
   }
 
   onStationSelected(station) {
-    console.log(station)
     this.props.dispatch(openStation(station))
   }
 

@@ -52,26 +52,28 @@ function getVideosRef(stationId) {
 }
 
 export function listAllStations(callback) {
-  //console.log('listAllStations')
   getStationsRef().on('value', (snapshot) => {
     var stations = []
-    snapshot.forEach((snap) => {
-      stations.push(snap.val())
+    snapshot.forEach((station) => {
+      const stationObj = station.val()
+      const videosObj = stationObj.videos
+      var videos = []
+      if (videosObj) {
+        videos = Object.keys(videosObj).map(k => videosObj[k])
+      }
+      stations.push({ ...stationObj, videos })
     })
-    //console.log(stations)
     callback(stations)
   })
 }
 
 export function listAllVideos(stationId, callback) {
-  //console.log('listAllVideos')
   getVideosRef(stationId).on('value', (snapshot) => {
     var videos = []
     snapshot.forEach((snap) => {
       videos.push(snap.val())
     })
     if (videos) {
-      //console.log(videos)
       callback(videos)
     }
   })
