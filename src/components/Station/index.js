@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import YouTubePlayer from 'react-native-youtube'
 import config from '../../config'
-import VideoList from '../VideoList'
+import VideoList from '../List'
 
 const propTypes = {}
 const defaultProps = {}
@@ -11,6 +11,7 @@ function StationPure(props) {
   return (
     <View style={styles.container}>
       <Text>{props.stationTitle}</Text>
+
       <YouTubePlayer
         play
         playsInline
@@ -20,12 +21,14 @@ function StationPure(props) {
         apiKey={config.YOUTUBE_KEY}
         style={styles.youtube}
       />
+
       <TouchableOpacity onPress={props.addSong}>
         <Text>Add song</Text>
       </TouchableOpacity>
+
       <VideoList
-        videos={props.videos}
-        onItemSelected={props.onItemSelected}
+        items={props.videos}
+        onItemSelected={props.onVideoSelected}
       />
     </View>
   )

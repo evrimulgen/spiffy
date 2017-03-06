@@ -1,18 +1,18 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { View, ListView, StyleSheet, Text } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import VideoRow from './VideoRow'
 import { updateDatasource } from '../../utils'
+import Item from './Item'
 
 const propTypes = {
-  videos: PropTypes.array,
+  items: PropTypes.array,
 }
 
 const defaultProps = {
-  videos: [],
+  items: [],
 }
 
-class VideoList extends React.Component {
+class List extends Component {
   constructor(props) {
     super(props)
     this.updateDatasource = updateDatasource.bind(this)
@@ -20,26 +20,20 @@ class VideoList extends React.Component {
   }
 
   componentWillMount() {
-    //console.log('componentWillMount')
-    //console.log(this.props.videos)
-    this.updateDatasource(this.props.videos)
+    this.updateDatasource(this.props.items)
   }
 
   componentWillReceiveProps(nextProps) {
-    //console.log('componentWillReceiveProps')
-    //console.log(nextProps.videos)
-    this.updateDatasource(nextProps.videos)
+    this.updateDatasource(nextProps.items)
   }
 
-  renderRow(video) {
-    //console.log('renderRow')
+  renderRow(item) {
     return (
-      <VideoRow {...video} onRowPressed={() => this.props.onItemSelected(video.id)} />
+      <Item {...item} onItemSelected={() => this.props.onItemSelected(item.id)} />
     )
   }
 
   render() {
-    //console.log('render')
     return (
       <View style={{ flex: 1 }}>
         <ListView
@@ -60,7 +54,7 @@ const styles = StyleSheet.create({
   },
 })
 
-VideoList.propTypes = propTypes
-VideoList.defaultProps = defaultProps
+List.propTypes = propTypes
+List.defaultProps = defaultProps
 
-export default VideoList
+export default List

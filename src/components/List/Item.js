@@ -11,17 +11,20 @@ const defaultProps = {
   title: '',
 }
 
-function VideoRow(props) {
+function Item(props) {
   return (
-    <TouchableOpacity style={styles.touchable} onPress={props.onRowPressed}>
+    <TouchableOpacity style={styles.touchable} onPress={props.onItemSelected}>
       <View style={styles.container}>
+
         <Image
           style={{ width: props.thumbnail.width, height: props.thumbnail.height }}
           source={{ uri: props.thumbnail.url }}
         />
+
         <Text style={styles.text}>
           {props.title}
         </Text>
+
       </View>
     </TouchableOpacity>
   )
@@ -43,4 +46,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export default VideoRow
+Item.propTypes = propTypes
+Item.defaultProps = defaultProps
+
+export default Item

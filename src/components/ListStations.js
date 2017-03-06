@@ -1,18 +1,16 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import StationList from './VideoList'
+import StationList from './List'
 
 const propTypes = {}
 const defaultProps = {}
 
 function ListStationPure(props) {
-  console.log("liststationspure")
-  console.log(props)
   return (
     <View style={styles.container}>
       <Text>Bite</Text>
       <StationList
-        videos={props.stations}
+        items={props.stations}
         onItemSelected={props.onStationSelected}
       />
     </View>

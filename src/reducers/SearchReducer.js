@@ -12,7 +12,7 @@ function keyword(state = '', action) {
   }
 }
 
-function videos(state = [], action) {
+function results(state = [], action) {
   switch (action.type) {
     case t.FETCH_VIDEOS_SUCCESS:
       return action.payload
@@ -53,6 +53,6 @@ function selectedItemId(state = '', action) {
 export default combineReducers({
   keyword,
   selectedItemId,
-  videos,
+  results,
   fetching,
 })

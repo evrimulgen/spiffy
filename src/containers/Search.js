@@ -13,14 +13,14 @@ class Search extends Component {
 	constructor(props) {
 		super(props)
 		this.onKeywordChanged = this.onKeywordChanged.bind(this)
-		this.onItemSelected = this.onItemSelected.bind(this)
+		this.onResultSelected = this.onResultSelected.bind(this)
 	}
 
 	onKeywordChanged(keyword) {
 		this.props.dispatch(keywordChanged(keyword))
 	}
 
-	onItemSelected(itemId) {
+	onResultSelected(itemId) {
 		this.props.dispatch(itemSelected(itemId))
 	}
 
@@ -28,8 +28,8 @@ class Search extends Component {
     return (
 			<SearchPure
 				onKeywordChanged={this.onKeywordChanged}
-				onItemSelected={this.onItemSelected}
-				videos={this.props.videos}
+				onResultSelected={this.onResultSelected}
+				results={this.props.results}
 			/>
     )
   }

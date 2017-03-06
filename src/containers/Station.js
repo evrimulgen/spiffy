@@ -29,7 +29,7 @@ class Station extends Component {
     Actions.search()
   }
 
-  onItemSelected(itemId) {
+  onVideoSelected(itemId) {
     console.log(itemId+' selected')
   }
 
@@ -38,7 +38,7 @@ class Station extends Component {
       <StationPure
         stationTitle={this.props.title}
         addSong={this.addSong}
-        onItemSelected={this.onItemSelected}
+        onVideoSelected={this.onVideoSelected}
         videos={this.props.videos}
       />
     )
