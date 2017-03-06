@@ -25,6 +25,13 @@ export function createStation() {
     .then(userID => {
       station = {
         title: userID,
+        id: userID,
+        channelTitle: userID,
+        thumbnail: {
+          height: 90,
+          width: 120,
+          url: 'https://i.ytimg.com/vi/S3fTw_D3l10/hqdefault.jpg',
+        },
         videos: [],
       }
       firebase.database().ref('stations/' + userID).set(station)

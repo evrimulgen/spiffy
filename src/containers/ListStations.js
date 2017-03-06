@@ -7,6 +7,11 @@ const propTypes = {}
 const defaultProps = {}
 
 class ListStations extends Component {
+  constructor(props) {
+    super(props)
+    this.onCreateStation = this.onCreateStation.bind(this)
+  }
+  
   componentWillMount() {
     this.props.dispatch(fetchStations())
   }

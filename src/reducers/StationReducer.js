@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   channelTitle: '',
   thumbnail: {
     height: 90,
-    url: 'https://i.ytimg.com/vi/S3fTw_D3l10/hqdefault.jpg',
+    url: '',
     width: 120,
   },
   title: '',

@@ -12,22 +12,3 @@ export function fetchStations() {
     }))
   }
 }
-
-export function stationCreate() {
-  return (dispatch) => {
-    dispatch({
-      type: t.CREATE_STATION_REQUEST,
-    })
-    createStation()
-      .then(station => dispatch({
-        type: t.CREATE_STATION_SUCCESS,
-        payload: station,
-      }))
-      .catch(error => dispatch({
-        type: t.CREATE_STATION_FAILURE,
-        payload: error,
-        error: true,
-      }))
-      //.then(() => Actions.station())
-  }
-}
