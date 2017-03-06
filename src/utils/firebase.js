@@ -47,6 +47,17 @@ export function listAllStations(callback) {
   })
 }
 
+export function listAllVideos(stationId, callback) {
+  firebase.database().ref('stations/' + stationId + '/videos/').on('value', (snapshot) => {
+    var videos = snapshot.val()
+    console.log(videos)
+    if (videos) {
+      videos = Object.keys(videos).map(k => videos[k])
+      callback(videos)
+    }
+  })
+}
+
 export function addVideo(stationId, video) {
   return firebase.database().ref('stations/' + stationId + '/videos/').push(video)
 }

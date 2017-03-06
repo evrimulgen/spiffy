@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
 import StationPure from '../components/Station'
+import { fetchVideos } from '../actions/StationActions'
 
 const propTypes = {
   videos: PropTypes.array
@@ -15,6 +16,10 @@ class Station extends Component {
   constructor(props) {
     super(props)
     this.addSong = this.addSong.bind(this)
+  }
+
+  componentWillMount() {
+    this.props.dispatch(fetchVideos())
   }
 
   //componentDidMount() {

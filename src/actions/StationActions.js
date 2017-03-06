@@ -6,7 +6,8 @@ import {
 import {
   addVideo,
   registerStation,
-  createStation
+  createStation,
+  listAllVideos,
 } from '../utils/firebase'
 
 export function initStation() {
@@ -42,7 +43,7 @@ export function stationCreate() {
   }
 }
 
-export function fetchVideos() {
+export function fetchVideosYoutube() {
   return (dispatch, getState) => {
     const { station: { id } } = getState()
     dispatch({
@@ -58,6 +59,21 @@ export function fetchVideos() {
         payload: error,
         error: true,
       }))
+  }
+}
+
+export function fetchVideos() {
+  return (dispatch, getState) => {
+    const { station: { id } } = getState()
+    dispatch({
+      type: t.FETCH_VIDEOS_REQUEST,
+    })
+    listAllVideos(id, (videos) => {
+      dispatch({
+        type: t.FETCH_VIDEOS_SUCCESS,
+        payload: videos,
+      })
+    })
   }
 }
 
