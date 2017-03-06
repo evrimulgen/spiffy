@@ -24,6 +24,14 @@ export function initStation() {
     }
 }
 
+export function openStation(station) {
+  Actions.station()
+  return {
+    type: t.OPEN_STATION,
+    payload: station,
+  }
+}
+
 export function stationCreate() {
   return (dispatch) => {
     dispatch({

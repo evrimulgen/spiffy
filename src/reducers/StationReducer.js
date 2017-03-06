@@ -14,6 +14,8 @@ const INITIAL_STATE = {
 
 function station(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case t.OPEN_STATION:
+      return { ...state, ...action.payload }
     case t.CREATE_STATION_SUCCESS:
       return { ...state, ...action.payload }
     case t.CREATE_STATION_FAILURE:

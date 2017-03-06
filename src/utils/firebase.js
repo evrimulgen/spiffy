@@ -39,20 +39,39 @@ export function createStation() {
     })
 }
 
+function getStationRef() {
+  return firebase.database().ref('stations/'+stationId)
+}
+
+function getStationsRef() {
+  return firebase.database().ref('stations')
+}
+
+function getVideosRef(stationId) {
+  return firebase.database().ref('stations/' + stationId + '/videos')
+}
+
 export function listAllStations(callback) {
-  firebase.database().ref('stations').on('value', (snapshot) => {
-    var stations = snapshot.val()
-    stations = Object.keys(stations).map(k => stations[k])
+  //console.log('listAllStations')
+  getStationsRef().on('value', (snapshot) => {
+    var stations = []
+    snapshot.forEach((snap) => {
+      stations.push(snap.val())
+    })
+    //console.log(stations)
     callback(stations)
   })
 }
 
 export function listAllVideos(stationId, callback) {
-  firebase.database().ref('stations/' + stationId + '/videos/').on('value', (snapshot) => {
-    var videos = snapshot.val()
-    console.log(videos)
+  //console.log('listAllVideos')
+  getVideosRef(stationId).on('value', (snapshot) => {
+    var videos = []
+    snapshot.forEach((snap) => {
+      videos.push(snap.val())
+    })
     if (videos) {
-      videos = Object.keys(videos).map(k => videos[k])
+      //console.log(videos)
       callback(videos)
     }
   })
@@ -60,4 +79,9 @@ export function listAllVideos(stationId, callback) {
 
 export function addVideo(stationId, video) {
   return firebase.database().ref('stations/' + stationId + '/videos/').push(video)
+}
+
+export function getStation(stationId) {
+  return firebase.database().ref('stations/' + stationId).once('value')
+    .then(snapshot => console.log(snapshot.val()))
 }

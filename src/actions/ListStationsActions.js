@@ -1,5 +1,5 @@
-import { listStations as t } from './types'
-import { listAllStations } from '../utils/firebase'
+import { listStations as t, station } from './types'
+import { listAllStations, getStation } from '../utils/firebase'
 
 export function fetchStations() {
   return (dispatch) => {

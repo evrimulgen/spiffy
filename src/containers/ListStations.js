@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ListStationsPure from '../components/ListStations'
-import { fetchStations, stationCreate } from '../actions'
+import { fetchStations, stationCreate, openStation } from '../actions'
 
 const propTypes = {}
 const defaultProps = {}
@@ -10,8 +10,9 @@ class ListStations extends Component {
   constructor(props) {
     super(props)
     this.onCreateStation = this.onCreateStation.bind(this)
+    this.onStationSelected = this.onStationSelected.bind(this)
   }
-  
+
   componentWillMount() {
     this.props.dispatch(fetchStations())
   }
@@ -20,8 +21,9 @@ class ListStations extends Component {
     this.props.dispatch(stationCreate())
   }
 
-  onStationSelected(stationId) {
-    console.log(stationId + ' pressed')
+  onStationSelected(station) {
+    console.log(station)
+    this.props.dispatch(openStation(station))
   }
 
   render() {
