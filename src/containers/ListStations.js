@@ -10,10 +10,10 @@ class ListStations extends Component {
   componentWillMount() {
     this.props.dispatch(fetchStations())
   }
-  
+
   render() {
     return (
-      <ListStationsPure />
+      <ListStationsPure stations={this.props.stations}/>
     )
   }
 }
@@ -21,8 +21,6 @@ class ListStations extends Component {
 ListStations.propTypes = propTypes
 ListStations.defaultProps = defaultProps
 
-const mapStateToProps = (state) => {
-  return state
-}
+const mapStateToProps = (state) => state.stations
 
 export default connect(mapStateToProps)(ListStations)

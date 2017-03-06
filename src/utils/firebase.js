@@ -5,8 +5,7 @@ export function getFirebaseUid() {
 }
 
 export function getUserID() {
-  return firebase.database().ref('users/' + getFirebaseUid())
-    .once('value')
+  return firebase.database().ref('users/' + getFirebaseUid()).once('value')
     .then(snapshot => snapshot.val().userID)
 }
 
@@ -21,9 +20,10 @@ export function registerStation(station) {
     .then(userID => firebase.database().ref('stations/' + userID).set(station))
 }
 
-export function getSpiffyStations() {
-  return firebase.database().ref('stations')
-    .once('value')
-    .then(stations => stations.val())
-    .then(stations => Object.keys(stations).map(k => stations[k]))
+export function getSpiffyStations(callback) {
+  firebase.database().ref('stations').on('value', (snapshot) => {
+    var stations = snapshot.val()
+    stations = Object.keys(stations).map(k => stations[k])
+    callback(stations)
+  })
 }
