@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import StationList from './List'
 
 const propTypes = {}
@@ -9,6 +9,15 @@ function ListStationPure(props) {
   return (
     <View style={styles.container}>
       <Text>Current Spiffy Stations</Text>
+
+      <TouchableOpacity
+        onPress={props.onCreateStation}
+        >
+        <Text>
+          Create a new station
+        </Text>
+      </TouchableOpacity>
+
       <StationList
         items={props.stations}
         onItemSelected={props.onStationSelected}
@@ -21,7 +30,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'rgb(230, 108, 147)',
+    //backgroundColor: 'rgb(230, 108, 147)',
   },
 })
 

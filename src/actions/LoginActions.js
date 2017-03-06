@@ -8,11 +8,10 @@ export function userLoggedIn(user) {
       type: t.USER_LOGGED_IN,
       payload: user,
     })
-    //firebase.auth().signInWithCustomToken(user.accessToken)
     firebase.auth().signInAnonymously()
       .then(() => {
-        console.log('Firebase authentication ok')
         registerUser(user)
+        console.log('Firebase authentication ok')
       })
       .catch((error) => {
         console.log('Firebase authentication failed')

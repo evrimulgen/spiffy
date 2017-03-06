@@ -14,7 +14,6 @@ class MyRouter extends Component {
     googleSignIn()
       .then(user => this.props.dispatch(userLoggedIn(user)))
       .catch(() => googleSignIn())
-      .then(() => this.props.dispatch(initStation()))
   }
 
   render() {

@@ -20,7 +20,19 @@ export function registerStation(station) {
     .then(userID => firebase.database().ref('stations/' + userID).set(station))
 }
 
-export function getSpiffyStations(callback) {
+export function createStation() {
+  return getUserID()
+    .then(userID => {
+      station = {
+        title: userID,
+        videos: [],
+      }
+      firebase.database().ref('stations/' + userID).set(station)
+      return station
+    })
+}
+
+export function listAllStations(callback) {
   firebase.database().ref('stations').on('value', (snapshot) => {
     var stations = snapshot.val()
     stations = Object.keys(stations).map(k => stations[k])

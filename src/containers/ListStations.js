@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ListStationsPure from '../components/ListStations'
-import { fetchStations } from '../actions'
+import { fetchStations, stationCreate } from '../actions'
 
 const propTypes = {}
 const defaultProps = {}
@@ -9,6 +9,10 @@ const defaultProps = {}
 class ListStations extends Component {
   componentWillMount() {
     this.props.dispatch(fetchStations())
+  }
+
+  onCreateStation() {
+    this.props.dispatch(stationCreate())
   }
 
   onStationSelected(stationId) {
@@ -19,6 +23,7 @@ class ListStations extends Component {
     return (
       <ListStationsPure
         stations={this.props.stations}
+        onCreateStation={this.onCreateStation}
         onStationSelected={this.onStationSelected}
       />
     )

@@ -23,15 +23,15 @@ export function makeQuery(baseURL, params) {
 }
 
 // Return the playlist id corresponding of the Spiffy Station
-export function createStation(title = 'Spiffy5') {
-  return getAllPlaylists()
-    .then((playlists) => {
-      for (var p of playlists) {
-        if (p.title == title) {
-          return p
-        }
-      }
-      return createPlaylist(title)
-    })
-    .catch(error => console.log(error))
-}
+//export function createStation(title = 'Spiffy5') {
+//  return getAllPlaylists()
+//    .then((playlists) => {
+//      for (var p of playlists) {
+//        if (p.title == title) {
+//          return p
+//        }
+//      }
+//      return createPlaylist(title)
+//    })
+//    .catch(error => console.log(error))
+//}
