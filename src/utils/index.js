@@ -19,16 +19,15 @@ export function makeQuery(baseURL, params) {
 }
 
 // Return the playlist id corresponding of the Spiffy Station
-export function getSpiffyId() {
-  const SPIFFY = 'Spiffy3'
+export function createStation(title = 'Spiffy5') {
   return getAllPlaylists()
     .then((playlists) => {
       for (var p of playlists) {
-        if (p.title == SPIFFY) {
-          return p.id
+        if (p.title == title) {
+          return p
         }
       }
-      return createPlaylist(SPIFFY)
+      return createPlaylist(title)
     })
     .catch(error => console.log(error))
 }

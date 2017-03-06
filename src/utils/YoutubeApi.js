@@ -16,6 +16,15 @@ function getParams() {
   return params
 }
 
+function formatItem(item) {
+  return {
+    id: item.id,
+    title: item.snippet.title,
+    thumbnail: item.snippet.thumbnails.default,
+    channelTitle: item.snippet.channelTitle,
+  }
+}
+
 export function search(keyword) {
   const params = {
     ...getParams(),
@@ -26,12 +35,7 @@ export function search(keyword) {
   return fetch(makeQuery(SEARCH_URL, params))
     .then(response => response.json())
     .catch(error => console.log(error))
-    .then(response => response.items.map(v => ({
-      id: v.id.videoId,
-      title: v.snippet.title,
-      channelTitle: v.snippet.channelTitle,
-      thumbnail: v.snippet.thumbnails.default,
-    })))
+    .then(response => response.items.map(formatItem))
 }
 
 export function createPlaylist(title) {
@@ -49,7 +53,7 @@ export function createPlaylist(title) {
   return fetch(makeQuery(PLAYLIST_URL, getParams()), request)
     .then(response => response.json())
     .catch(error => console.log(error))
-    .then(response => response.id)
+    .then(formatItem)
 }
 
 export function addVideo(playlistId, videoId) {
@@ -71,16 +75,14 @@ export function addVideo(playlistId, videoId) {
   return fetch(makeQuery(ITEM_URL, getParams()), request)
     .then(response => response.json())
     .catch(error => console.log(error))
+    .then(formatItem)
 }
 
 export function getAllPlaylists() {
   let playlists = []
 
   function format(response) {
-    const playlists = response.items.map(p => ({
-      id: p.id,
-      title: p.snippet.title
-    }))
+    const playlists = response.items.map(formatItem)
     return { nextPageToken: response.nextPageToken, playlists }
   }
 
@@ -113,11 +115,7 @@ export function getAllPlaylists() {
     let videos = []
 
     function format(response) {
-      const videos = response.items.map(v => ({
-        id: v.id,
-        thumbnail: v.snippet.thumbnails.default,
-        title: v.snippet.title,
-      }))
+      const videos = response.items.map(formatItem)
       return { videos, nextPageToken: response.nextPageToken }
     }
 

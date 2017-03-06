@@ -1,25 +1,25 @@
-import { combineReducers } from 'redux'
 import { station as t } from '../actions/Types'
 
-function id(state = '', action) {
-  switch (action.type) {
-    case t.SET_STATION_ID:
-      return action.payload
-    default:
-      return state
-  }
+const INITIAL_STATE = {
+  id: '',
+  channelTitle: '',
+  thumbnail: {},
+  title: '',
+  videos: [],
 }
 
-function videos(state = [], action) {
+function station(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case t.SET_STATION:
+      return { ...state, ...action.payload }
     case t.FETCH_VIDEOS_SUCCESS:
-      return action.payload
+      return { ...state, videos: action.payload }
+    case t.FETCH_VIDEOS_FAILURE:
+      console.log(action.payload)
+      return state
     default:
       return state
   }
 }
 
-export default combineReducers({
-  id,
-  videos,
-})
+export default station

@@ -16,7 +16,14 @@ export function registerUser(user) {
   })
 }
 
-export function registerStation(stationID) {
+export function registerStation(station) {
   getUserID()
-    .then(userID => firebase.database().ref('playlists/' + userID).set({ stationID }))
+    .then(userID => firebase.database().ref('stations/' + userID).set(station))
+}
+
+export function getSpiffyStations() {
+  firebase.database().ref('stations')
+    .once('value')
+    .then(stations => stations.val())
+    .then(stations => Object.keys(stations).map(k => stations[k]))
 }

@@ -27,10 +27,12 @@ export function keywordChanged(keyword) {
 
 export function itemSelected(itemId) {
   return (dispatch) => {
+    const { kind, videoId, playlistId } = itemId
+    const id = (kind == 'youtube#video') ? videoId : playlistId
     dispatch({
       type: t.ITEM_SELECTED,
-      payload: itemId,
+      payload: id,
     })
-    dispatch(videoAdded(itemId))
+    dispatch(videoAdded(id))
   }
 }
