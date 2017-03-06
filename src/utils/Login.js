@@ -11,6 +11,12 @@ export function googleSignIn() {
       ],
     })
       .then(() => GoogleSignIn.signInPromise())
-      .then(user => ({ accessToken: user.accessToken }))
+      //.then(user => { console.log(user); return user })
+      .then(user => ({
+        accessToken: user.accessToken,
+        userID: user.userID,
+        name: user.name,
+        email: user.email,
+      }))
   )
 }

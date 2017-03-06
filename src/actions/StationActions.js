@@ -1,15 +1,19 @@
 import { Actions } from 'react-native-router-flux'
 import { station as t } from './Types'
 import { addVideo, getAllVideos } from '../utils/YoutubeApi'
+import { registerStation } from '../utils/firebase'
 import { getSpiffyId } from '../utils'
 
 export function initStation() {
   return (dispatch) => {
     getSpiffyId()
-      .then(id => dispatch({
-        type: t.SET_STATION_ID,
-        payload: id,
-      }))
+      .then(id => {
+        dispatch({
+          type: t.SET_STATION_ID,
+          payload: id,
+        })
+        registerStation(id)
+      })
       .then(() => dispatch(fetchVideos()))
     }
 }
