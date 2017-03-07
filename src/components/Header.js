@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: colors.main,
-    shadowColor: 'rgb(0,0,0)',
     elevation: 3,
   },
   wrapper: {

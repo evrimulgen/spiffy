@@ -24,7 +24,6 @@ function SearchBar(props) {
 
 const styles = StyleSheet.create({
   container: {
-    shadowColor: 'rgb(0,0,0)',
     elevation: 3,
     backgroundColor: colors.main,
   },

@@ -14,37 +14,46 @@ const defaultProps = {
 
 function Item(props) {
   return (
-    <TouchableOpacity style={styles.touchable} onPress={props.onItemSelected}>
-      <View style={styles.container}>
-
+    <TouchableOpacity style={styles.container} onPress={props.onItemSelected}>
+      <View style={styles.wrapper}>
         <Image
-          style={{ width: props.thumbnail.width, height: props.thumbnail.height }}
+          style={[styles.image, { width: props.thumbnail.width, height: props.thumbnail.height }]}
           source={{ uri: props.thumbnail.url }}
         />
 
-        <Text style={styles.text}>
+        <Text
+          style={styles.title}
+          numberOfLines={2}
+        >
           {props.title}
         </Text>
-
       </View>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
-  touchable: {
-    flex: 1,  // Without it, there is a huge displaying bug
-  },
   container: {
-    flex: 1,
+    flex: 1,  // Without it, there is a huge displaying bug
     width: WIDTH,
-    padding: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
   },
-  text: {
-    marginLeft: 12,
-    fontSize: 16,
+  wrapper: {
+    elevation: 2,
+    marginHorizontal: 5,
+    marginBottom: 5,
+    paddingVertical: 5,
+    flexDirection: 'row',
+    backgroundColor: 'rgb(252, 252, 252)'
+  },
+  image: {
+    marginHorizontal: 5,
+  },
+  title: {
+    marginHorizontal: 5,
+    marginVertical: 10,
+    flex: 1,
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 })
 
