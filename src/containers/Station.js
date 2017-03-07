@@ -53,6 +53,7 @@ class Station extends Component {
         onChangeState={this.onChangeState}
         isReady={this.props.isReady}
         onReady={this.onReady}
+        stationId={this.props.id}
       />
     )
   }
