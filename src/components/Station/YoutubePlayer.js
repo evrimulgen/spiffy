@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 5,
+    marginBottom: 5,
   },
   youtube: {
     height: 9 / 16 * WIDTH,

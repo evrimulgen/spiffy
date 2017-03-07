@@ -26,7 +26,7 @@ function StationPure(props) {
         onItemSelected={props.onVideoSelected}
       />
 
-      <AddSongButton onPress={props.addSong} style={{ position: 'absolute', bottom: 20, right: 20 }}/>
+      <AddSongButton style={styles.addSongButton} onPress={props.addSong}/>
     </View>
   )
 }
@@ -39,6 +39,11 @@ const styles = StyleSheet.create({
   youtube: {
     height: 169,
     width: 300,
+  },
+  addSongButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
 })
 
