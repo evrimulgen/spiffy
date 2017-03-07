@@ -1,6 +1,7 @@
 import { station as t } from '../actions/types'
 
 const INITIAL_STATE = {
+  play: false,
   id: '',
   videoPlayed: '',
   channelTitle: '',
@@ -18,7 +19,7 @@ function station(state = INITIAL_STATE, action) {
     case t.OPEN_STATION:
       return { ...state, ...action.payload }
     case t.SET_VIDEO_PLAYED:
-      return { ...state, videoPlayed: action.payload }
+      return { ...state, videoPlayed: action.payload, play: true }
     case t.CREATE_STATION_SUCCESS:
       return { ...state, ...action.payload }
     case t.CREATE_STATION_FAILURE:

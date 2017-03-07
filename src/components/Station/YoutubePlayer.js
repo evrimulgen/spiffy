@@ -10,6 +10,7 @@ function YoutubePlayer(props) {
   return (
     <YouTube
       playsInline
+      play={props.play}
       fs={false}
       controls={1}
       videoId={props.videoId}

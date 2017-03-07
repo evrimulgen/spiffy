@@ -8,6 +8,7 @@ import {
   registerStation,
   createStation,
   listAllVideos,
+  removeFirstVideo,
 } from '../utils/firebase'
 
 export function initStation() {
@@ -81,10 +82,12 @@ export function fetchVideos() {
         type: t.FETCH_VIDEOS_SUCCESS,
         payload: videos,
       })
-      dispatch({
-        type: t.SET_VIDEO_PLAYED,
-        payload: videos[0].id,
-      })
+      if (videos[0]) {
+        dispatch({
+          type: t.SET_VIDEO_PLAYED,
+          payload: videos[0].id,
+        })
+      }
     })
   }
 }
@@ -105,5 +108,12 @@ export function videoAdded(video) {
         error: true,
       }))
       .then(() => Actions.pop())
+  }
+}
+
+export function nextSong() {
+  return (dispatch, getState) => {
+    const { station: { id } } = getState()
+    removeFirstVideo(id)
   }
 }

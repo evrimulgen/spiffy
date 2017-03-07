@@ -87,3 +87,9 @@ export function getStation(stationId) {
   return firebase.database().ref('stations/' + stationId).once('value')
     .then(snapshot => console.log(snapshot.val()))
 }
+
+export function removeFirstVideo(stationId) {
+  getVideosRef(stationId).once('value')
+    .then(snapshot => Object.keys(snapshot.val())[0])
+    .then(firstVideoKey => getVideosRef(stationId).child(firstVideoKey).remove())
+}
