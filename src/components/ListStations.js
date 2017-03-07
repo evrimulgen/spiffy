@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import StationList from './List'
+import Header from './Header'
 
 const propTypes = {}
 const defaultProps = {}
@@ -8,7 +9,7 @@ const defaultProps = {}
 function ListStationPure(props) {
   return (
     <View style={styles.container}>
-      <Text>Current Spiffy Stations</Text>
+      <Header>Stations</Header>
 
       <TouchableOpacity
         onPress={props.onCreateStation}

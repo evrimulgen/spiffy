@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import YoutubePlayer from './YoutubePlayer'
 import AddSongButton from '../AddSongButton'
 import VideoList from '../List'
+import Header from '../Header'
 
 const propTypes = {}
 const defaultProps = {}
@@ -10,7 +11,7 @@ const defaultProps = {}
 function StationPure(props) {
   return (
     <View style={styles.container}>
-      <Text>{props.stationTitle}</Text>
+      <Header>{props.stationTitle}</Header>
 
       <YoutubePlayer
         isReady={props.isReady}

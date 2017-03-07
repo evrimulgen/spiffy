@@ -15,6 +15,7 @@ function SearchPure(props) {
     <View style={styles.container}>
       <View style={styles.textInputContainer}>
         <TextInput
+          autoFocus
           style={styles.textInput}
           value={props.keyword}
           onChangeText={props.onKeywordChanged}
