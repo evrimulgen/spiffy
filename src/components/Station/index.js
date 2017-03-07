@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import YoutubePlayer from './YoutubePlayer'
+import AddSongButton from '../AddSongButton'
 import VideoList from '../List'
 
 const propTypes = {}
@@ -19,14 +20,12 @@ function StationPure(props) {
         onChangeState={props.onChangeState}
       />
 
-      <TouchableOpacity onPress={props.addSong}>
-        <Text>Add song</Text>
-      </TouchableOpacity>
-
       <VideoList
         items={props.videos}
         onItemSelected={props.onVideoSelected}
       />
+
+      <AddSongButton onPress={props.addSong} style={{ position: 'absolute', bottom: 20, right: 20 }}/>
     </View>
   )
 }
