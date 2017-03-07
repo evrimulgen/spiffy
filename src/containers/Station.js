@@ -16,6 +16,7 @@ class Station extends Component {
   constructor(props) {
     super(props)
     this.addSong = this.addSong.bind(this)
+    this.nextSongg = this.nextSongg.bind(this)
     this.onChangeState = this.onChangeState.bind(this)
     this.onReady = this.onReady.bind(this)
   }
@@ -27,6 +28,10 @@ class Station extends Component {
   addSong() {
     this.props.dispatch({ type: 'SEARCH_RESET' })
     Actions.search()
+  }
+
+  nextSongg() {
+    this.props.dispatch(nextSong())
   }
 
   onVideoSelected(itemId) {}
@@ -54,6 +59,7 @@ class Station extends Component {
         isReady={this.props.isReady}
         onReady={this.onReady}
         stationId={this.props.id}
+        nextSong={this.nextSongg}
       />
     )
   }

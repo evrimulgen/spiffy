@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import YoutubePlayer from './YoutubePlayer'
 import AddSongButton from '../AddSongButton'
+import NextSongButton from '../NextSongButton'
 import VideoList from '../List'
 import Header from '../Header'
 import { getUser } from '../../selectors'
@@ -10,9 +11,21 @@ const propTypes = {}
 const defaultProps = {}
 
 function StationPure(props) {
-  const renderButton = () => (props.stationId != getUser().userID)
-    ? <AddSongButton style={styles.addSongButton} onPress={props.addSong}/>
-    : <Text>It's your station!</Text>
+  const addSongButton = <AddSongButton onPress={props.addSong} />
+  const nextSongButton = <NextSongButton onPress={props.nextSong} />
+
+  const renderButton = () => (props.stationId == getUser().userID) ? (
+      <View style={styles.button}>
+        <View>
+          {nextSongButton}
+          {addSongButton}
+        </View>
+      </View>
+    ) : (
+      <View style={styles.button}>
+        {addSongButton}
+      </View>
+    )
 
   return (
     <View style={styles.container}>
@@ -32,7 +45,6 @@ function StationPure(props) {
       />
 
       {renderButton()}
-
     </View>
   )
 }
@@ -46,7 +58,7 @@ const styles = StyleSheet.create({
     height: 169,
     width: 300,
   },
-  addSongButton: {
+  button: {
     position: 'absolute',
     bottom: 20,
     right: 20,
