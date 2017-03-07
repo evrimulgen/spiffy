@@ -22,12 +22,6 @@ class Station extends Component {
     this.props.dispatch(fetchVideos())
   }
 
-  //componentDidMount() {
-  //  setInterval(() => {
-  //    this.props.dispatch(fetchVideos())
-  //  }, 1000)
-  //}
-
   addSong() {
     this.props.dispatch({ type: 'SEARCH_RESET' })
     Actions.search()
@@ -44,6 +38,8 @@ class Station extends Component {
         addSong={this.addSong}
         onVideoSelected={this.onVideoSelected}
         videos={this.props.videos}
+        videoPlayed={this.props.videoPlayed}
+        onChangeState={this.props.onChangeState}
       />
     )
   }

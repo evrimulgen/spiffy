@@ -2,6 +2,7 @@ import { station as t } from '../actions/types'
 
 const INITIAL_STATE = {
   id: '',
+  videoPlayed: '',
   channelTitle: '',
   thumbnail: {
     height: 90,

@@ -42,17 +42,14 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 15,
 		borderColor: '#d1d1d1',
 		borderWidth: 2,
-		backgroundColor: 'rgb(34, 83, 213)',
 	},
 	textInputContainer: {
 		flexDirection: 'row',
 		paddingVertical: 20,
-		backgroundColor: 'rgb(108, 107, 237)',
 	},
 	container: {
 		flex: 1,
 		padding: 0,
-    backgroundColor: 'rgb(230, 108, 147)',
   },
 });
 
