@@ -11,7 +11,7 @@ function YoutubePlayer(props) {
     <YouTube
       playsInline
       fs={false}
-      controls={2}
+      controls={1}
       videoId={props.videoId}
       onChangeState={props.onChangeState}
       apiKey={config.YOUTUBE_KEY}

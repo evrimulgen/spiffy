@@ -81,6 +81,10 @@ export function fetchVideos() {
         type: t.FETCH_VIDEOS_SUCCESS,
         payload: videos,
       })
+      dispatch({
+        type: t.SET_VIDEO_PLAYED,
+        payload: videos[0].id,
+      })
     })
   }
 }

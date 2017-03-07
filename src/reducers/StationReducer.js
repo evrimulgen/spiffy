@@ -17,6 +17,8 @@ function station(state = INITIAL_STATE, action) {
   switch (action.type) {
     case t.OPEN_STATION:
       return { ...state, ...action.payload }
+    case t.SET_VIDEO_PLAYED:
+      return { ...state, videoPlayed: action.payload }
     case t.CREATE_STATION_SUCCESS:
       return { ...state, ...action.payload }
     case t.CREATE_STATION_FAILURE:
