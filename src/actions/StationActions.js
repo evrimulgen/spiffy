@@ -26,10 +26,18 @@ export function initStation() {
 }
 
 export function openStation(station) {
-  Actions.station()
-  return {
-    type: t.OPEN_STATION,
-    payload: station,
+  return (dispatch) => {
+    Actions.station()
+    dispatch({
+      type: t.OPEN_STATION,
+      payload: station,
+    })
+    if (station.videos && station.videos.length > 0) {
+      dispatch({
+        type: t.SET_VIDEO_PLAYED,
+        payload: station.videos[0].id
+      })
+    }
   }
 }
 
@@ -82,7 +90,7 @@ export function fetchVideos() {
         type: t.FETCH_VIDEOS_SUCCESS,
         payload: videos,
       })
-      if (videos[0]) {
+      if (videos && videos.length > 0) {
         dispatch({
           type: t.SET_VIDEO_PLAYED,
           payload: videos[0].id,
@@ -113,7 +121,16 @@ export function videoAdded(video) {
 
 export function nextSong() {
   return (dispatch, getState) => {
+    dispatch({
+      type: t.NEXT_SONG,
+    })
     const { station: { id } } = getState()
     removeFirstVideo(id)
+  }
+}
+
+export function ytPlayerReady() {
+  return {
+    type: t.YT_PLAYER_READY
   }
 }

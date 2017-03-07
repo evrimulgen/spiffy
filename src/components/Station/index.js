@@ -12,6 +12,8 @@ function StationPure(props) {
       <Text>{props.stationTitle}</Text>
 
       <YoutubePlayer
+        isReady={props.isReady}
+        onReady={props.onReady}
         play={props.play}
         videoId={props.videoPlayed}
         onChangeState={props.onChangeState}
