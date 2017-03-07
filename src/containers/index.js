@@ -5,7 +5,6 @@ import { userLoggedIn, initStation } from '../actions'
 import { googleSignIn } from '../utils/login'
 import Tinder from './Tinder'
 import Search from './Search'
-import CreateStation from './CreateStation'
 import Station from './Station'
 import ListStations from './ListStations'
 
@@ -23,7 +22,6 @@ class MyRouter extends Component {
           <Scene key="listStations" component={ListStations} hideNavBar />
           <Scene key="station" component={Station} hideNavBar />
           <Scene key="search" component={Search} hideNavBar />
-          <Scene key="createStation" component={CreateStation} hideNavBar />
           <Scene key="tinder" component={Tinder} hideNavBar />
         </Scene>
       </Router>

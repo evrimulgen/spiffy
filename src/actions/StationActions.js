@@ -5,25 +5,10 @@ import {
 } from '../utils/youtubeAPI'
 import {
   addVideo,
-  registerStation,
   createStation,
   listAllVideos,
   removeFirstVideo,
 } from '../utils/firebase'
-
-export function initStation() {
-  return (dispatch) => {
-    createStation()
-      .then(station => {
-        dispatch({
-          type: t.SET_STATION,
-          payload: station,
-        })
-        registerStation(station)
-      })
-      .then(() => dispatch(fetchVideos()))
-    }
-}
 
 export function openStation(station) {
   return (dispatch) => {

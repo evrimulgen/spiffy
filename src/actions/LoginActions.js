@@ -9,13 +9,7 @@ export function userLoggedIn(user) {
       payload: user,
     })
     firebase.auth().signInAnonymously()
-      .then(() => {
-        registerUser(user)
-        console.log('Firebase authentication ok')
-      })
-      .catch((error) => {
-        console.log('Firebase authentication failed')
-        console.log(error)
-      })
+      .then(() => console.log('Firebase authentication ok'))
+      .catch((error) => console.log(`Firebase authentication failed: ${error}`))
   }
 }

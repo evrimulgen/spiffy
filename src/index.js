@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 import { Provider } from 'react-redux'
-import firebase from 'firebase'
-import config from './config'
 import Router from './containers'
 import store from './store'
-
-// Initialize Firebase
-const firebaseApp = firebase.initializeApp(config.FIREBASE)
 
 class App extends Component {
   render() {
