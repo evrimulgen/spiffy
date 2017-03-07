@@ -24,13 +24,14 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    padding: 15,
-    paddingTop: 13,
+    height: 50,
     alignItems: 'center',
+    justifyContent: 'center'
   },
   text: {
+    paddingBottom: 3,
+    fontSize: 18,
     fontWeight: 'bold',
-    fontSize: 20, 
     color: 'rgb(255, 255, 255)',
   }
 })

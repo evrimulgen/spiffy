@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, TextInput, StyleSheet } from 'react-native'
+import { colors } from '../../styles'
 
 const propTypes = {}
 const defaultProps = {}
@@ -7,33 +8,37 @@ const defaultProps = {}
 function SearchBar(props) {
   return (
     <View style={styles.container}>
+      <View style={styles.wrapper}>
         <TextInput
-          autoFocus
           style={styles.textInput}
-          value={props.keyword}
-          onChangeText={props.onKeywordChanged}
+          autoFocus
           underlineColorAndroid={'transparent'}
           placeholder="Search on YouTube"
+          value={props.keyword}
+          onChangeText={props.onKeywordChanged}
         />
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    shadowColor: 'rgb(0,0,0)',
+    elevation: 3,
+    backgroundColor: colors.main,
+  },
+  wrapper: {
 		flexDirection: 'row',
-		paddingVertical: 20,
+    alignItems: 'center',
+    height: 50,
+    paddingHorizontal: 15,
+    paddingBottom: 2,
   },
   textInput: {
-		alignSelf: 'center',
-		fontSize: 16,
-		flex: 1,
-		height: 40,
-		marginHorizontal: 20,
-		paddingVertical: 10,
-		paddingHorizontal: 15,
-		borderColor: '#d1d1d1',
-		borderWidth: 2,
+    padding: 0,
+    flex: 1,
+		fontSize: 18,
 	},
 })
 
