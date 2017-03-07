@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import SearchList from '../List'
+import SearchBar from './SearchBar'
 
 const propTypes = {
   videos: PropTypes.array,
@@ -13,16 +14,10 @@ const defaultProps = {
 function SearchPure(props) {
   return (
     <View style={styles.container}>
-      <View style={styles.textInputContainer}>
-        <TextInput
-          autoFocus
-          style={styles.textInput}
-          value={props.keyword}
-          onChangeText={props.onKeywordChanged}
-          underlineColorAndroid={'transparent'}
-          placeholder="Search on YouTube"
-        />
-      </View>
+      <SearchBar
+        keyword={props.keyword}
+        onKeywordChanged={props.onKeywordChanged}
+      />
 
       <SearchList
         items={props.results}
@@ -33,21 +28,6 @@ function SearchPure(props) {
 }
 
 const styles = StyleSheet.create({
-	textInput: {
-		alignSelf: 'center',
-		fontSize: 16,
-		flex: 1,
-		height: 40,
-		marginHorizontal: 20,
-		paddingVertical: 10,
-		paddingHorizontal: 15,
-		borderColor: '#d1d1d1',
-		borderWidth: 2,
-	},
-	textInputContainer: {
-		flexDirection: 'row',
-		paddingVertical: 20,
-	},
 	container: {
 		flex: 1,
 		padding: 0,
