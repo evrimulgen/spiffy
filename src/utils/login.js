@@ -5,9 +5,7 @@ export function googleSignIn() {
     GoogleSignIn.configure({
       scopes: [
         'openid',
-        'email',
         'profile',
-        'https://www.googleapis.com/auth/youtube',
       ],
     })
       .then(() => GoogleSignIn.signInPromise())
