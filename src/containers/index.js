@@ -11,9 +11,10 @@ import SplashScreen from '../components/SplashScreen'
 
 class MyRouter extends Component {
   componentWillMount() {
-    googleSignIn()
-      .then(user => this.props.dispatch(userLoggedIn(user)))
-      .then(() => Actions.listStations())
+    //googleSignIn()
+    //  .then(user => this.props.dispatch(userLoggedIn(user)))
+    //  .then(() => Actions.listStations())
+    setTimeout(() => Actions.listStations(), 1000)
   }
 
   render() {

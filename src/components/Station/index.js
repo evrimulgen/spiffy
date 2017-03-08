@@ -5,7 +5,7 @@ import Buttons from './Buttons'
 import VideoList from '../List'
 import VideoItem from '../Item'
 import Header from '../Header'
-import { getUser } from '../../selectors'
+import { getUser } from '../../utils/firebase'
 
 const propTypes = {}
 const defaultProps = {}

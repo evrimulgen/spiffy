@@ -7,10 +7,10 @@ const PLAYLIST_URL = 'https://www.googleapis.com/youtube/v3/playlists'
 const ITEM_URL = 'https://www.googleapis.com/youtube/v3/playlistItems'
 
 function getParams() {
-  const { user: { accessToken } } = store.getState()
+  //const { user: { accessToken } } = store.getState()
   const params = {
     key: config.YOUTUBE_KEY,
-    access_token: accessToken,
+    //access_token: accessToken,
     part: 'snippet',
   }
   return params

@@ -1,10 +1,18 @@
 import firebase from 'firebase'
 import config from '../config'
-import { getUser } from '../selectors'
 
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(config.FIREBASE)
 const db = firebase.database()
+
+firebase.auth().signInAnonymously()
+  .then(() => console.log('Firebase authentication ok'))
+  .catch((error) => console.log(`Firebase authentication failed: ${error}`))
+
+export const getUser = () => ({
+  userID: firebase.auth().currentUser.uid,
+  name: 'testName',
+})
 
 // Database resources references
 const getStationsRef = () => db.ref('stations')
