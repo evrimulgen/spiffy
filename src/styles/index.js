@@ -6,7 +6,3 @@ export const WIDTH = Dimensions.get('window').width
 export const colors = {
     main: '#FF473A',
 }
-
-export const styles = StyleSheet.create({
-
-})
