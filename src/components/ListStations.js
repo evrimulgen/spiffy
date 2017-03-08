@@ -3,18 +3,24 @@ import { View, StyleSheet } from 'react-native'
 import StationList from './List'
 import Header from './Header'
 import NewStationButton from './NewStationButton'
+import Item from './Item'
 
 const propTypes = {}
 const defaultProps = {}
 
+
 function ListStationPure(props) {
+  const renderStation = station => (
+    <Item {...station} onItemSelected={() => props.onStationSelected(station)} />
+  )
+
   return (
     <View style={styles.container}>
       <Header>Stations</Header>
 
       <StationList
         items={props.stations}
-        onItemSelected={props.onStationSelected}
+        renderRow={renderStation}
       />
 
       <NewStationButton

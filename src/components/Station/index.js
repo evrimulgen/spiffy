@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import YoutubePlayer from './YoutubePlayer'
-import AddSongButton from '../AddSongButton'
-import NextSongButton from '../NextSongButton'
+import Buttons from './Buttons'
 import VideoList from '../List'
+import Item from '../Item'
 import Header from '../Header'
 import { getUser } from '../../selectors'
 
@@ -11,21 +11,9 @@ const propTypes = {}
 const defaultProps = {}
 
 function StationPure(props) {
-  const addSongButton = <AddSongButton onPress={props.addSong} />
-  const nextSongButton = <NextSongButton onPress={props.nextSong} />
-
-  const renderButton = () => (props.stationId == getUser().userID) ? (
-      <View style={styles.button}>
-        <View>
-          {nextSongButton}
-          {addSongButton}
-        </View>
-      </View>
-    ) : (
-      <View style={styles.button}>
-        {addSongButton}
-      </View>
-    )
+  const renderVideo = video => (
+    <Item {...video} onItemSelected={() => props.onVideoSelected(video)} />
+  )
 
   return (
     <View style={styles.container}>
@@ -41,10 +29,15 @@ function StationPure(props) {
 
       <VideoList
         items={props.videos}
-        onItemSelected={props.onVideoSelected}
+        renderRow={renderVideo}
       />
 
-      {renderButton()}
+      <Buttons
+        style={styles.buttons}
+        addSong={props.AddSong}
+        nextSong={props.nextSong}
+        stationOwned={(props.stationId == getUser().userID)}
+      />
     </View>
   )
 }
@@ -54,11 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  youtube: {
-    height: 169,
-    width: 300,
-  },
-  button: {
+  buttons: {
     position: 'absolute',
     bottom: 20,
     right: 20,

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
-import { WIDTH } from '../../styles'
+import { WIDTH } from '../styles'
 
 const propTypes = {
   thumbnail: PropTypes.object,

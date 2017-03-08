@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { View, StyleSheet } from 'react-native'
 import SearchList from '../List'
+import Item from '../Item'
 import SearchBar from './SearchBar'
 
 const propTypes = {
@@ -12,6 +13,10 @@ const defaultProps = {
 }
 
 function SearchPure(props) {
+  const renderResult = result => (
+    <Item {...result} onItemSelected={() => props.onResultSelected(result)} />
+  )
+
   return (
     <View style={styles.container}>
       <SearchBar
@@ -21,7 +26,7 @@ function SearchPure(props) {
 
       <SearchList
         items={props.results}
-        onItemSelected={props.onResultSelected}
+        renderRow={renderResult}
       />
     </View>
   )
