@@ -21,10 +21,7 @@ function Item(props) {
           source={{ uri: props.thumbnail.url }}
         />
 
-        <Text
-          style={styles.title}
-          numberOfLines={2}
-        >
+        <Text style={styles.title} numberOfLines={2}>
           {props.title}
         </Text>
       </View>

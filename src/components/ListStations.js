@@ -11,7 +11,11 @@ const defaultProps = {}
 
 function ListStationPure(props) {
   const renderStation = station => (
-    <Item {...station} onItemSelected={() => props.onStationSelected(station)} />
+    <Item
+      title={station.title}
+      thumbnail={station.thumbnail}
+      onItemSelected={() => props.onStationSelected(station)}
+    />
   )
 
   return (

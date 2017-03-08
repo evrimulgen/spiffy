@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import YoutubePlayer from './YoutubePlayer'
 import Buttons from './Buttons'
 import VideoList from '../List'
-import Item from '../Item'
+import VideoItem from '../Item'
 import Header from '../Header'
 import { getUser } from '../../selectors'
 
@@ -12,7 +12,11 @@ const defaultProps = {}
 
 function StationPure(props) {
   const renderVideo = video => (
-    <Item {...video} onItemSelected={() => props.onVideoSelected(video)} />
+    <VideoItem
+      title={video.title}
+      thumbnail={video.thumbnail}
+      onVideoSelected={() => props.onVideoSelected(video)}
+    />
   )
 
   return (
@@ -34,7 +38,7 @@ function StationPure(props) {
 
       <Buttons
         style={styles.buttons}
-        addSong={props.AddSong}
+        addSong={props.addSong}
         nextSong={props.nextSong}
         stationOwned={(props.stationId == getUser().userID)}
       />
