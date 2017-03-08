@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native'
 import { WIDTH } from '../styles'
+import LikeButton from './LikeButton'
 
 const propTypes = {
   thumbnail: PropTypes.object,
@@ -13,17 +14,38 @@ const defaultProps = {
 }
 
 function Item(props) {
+  console.log(props)
+  const renderBody = () => {
+    switch (props.type) {
+      case 'station':
+      return (
+        <Text>
+          Created by <Text style={styles.createdBy}>{props.createdBy}</Text>
+        </Text>
+      )
+      case 'video':
+      return (
+        <LikeButton />
+      )
+    }
+  }
+
   return (
     <TouchableOpacity style={styles.container} onPress={props.onItemSelected}>
       <View style={styles.wrapper}>
+
         <Image
           style={[styles.image, { width: props.thumbnail.width, height: props.thumbnail.height }]}
           source={{ uri: props.thumbnail.url }}
         />
 
-        <Text style={styles.title} numberOfLines={2}>
-          {props.title}
-        </Text>
+        <View style={styles.body}>
+          <Text style={styles.stationTitle} numberOfLines={2}>
+            {props.title}
+          </Text>
+          {renderBody()}
+        </View>
+
       </View>
     </TouchableOpacity>
   )
@@ -45,12 +67,19 @@ const styles = StyleSheet.create({
   image: {
     marginHorizontal: 5,
   },
-  title: {
-    marginHorizontal: 5,
-    marginVertical: 10,
+  body: {
     flex: 1,
-    fontSize: 14,
+    marginHorizontal: 5,
+    alignSelf: 'stretch',
+    justifyContent: 'space-around',
+  },
+  title: {
+    fontSize: 16,
     fontWeight: 'bold',
+  },
+  createdBy: {
+    fontStyle: 'italic',
+    color: 'rgb(20, 202, 227)',
   },
 })
 

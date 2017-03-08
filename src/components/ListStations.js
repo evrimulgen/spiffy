@@ -12,8 +12,8 @@ const defaultProps = {}
 function ListStationPure(props) {
   const renderStation = station => (
     <Item
-      title={station.title}
-      thumbnail={station.thumbnail}
+      {...station}
+      type={'station'}
       onItemSelected={() => props.onStationSelected(station)}
     />
   )

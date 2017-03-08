@@ -15,8 +15,8 @@ const defaultProps = {
 function SearchPure(props) {
   const renderResult = result => (
     <Item
-      title={result.title}
-      thumbnail={result.thumbnail}
+      {...result}
+      type={'result'}
       onItemSelected={() => props.onResultSelected(result)}
     />
   )

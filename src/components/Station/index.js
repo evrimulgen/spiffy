@@ -13,8 +13,8 @@ const defaultProps = {}
 function StationPure(props) {
   const renderVideo = video => (
     <VideoItem
-      title={video.title}
-      thumbnail={video.thumbnail}
+      {...video}
+      type={'video'}
       onVideoSelected={() => props.onVideoSelected(video)}
     />
   )
