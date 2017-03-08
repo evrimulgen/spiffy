@@ -19,10 +19,11 @@ function StationPure(props) {
     />
   )
 
-  return (
-    <View style={styles.container}>
-      <Header>{props.stationTitle}</Header>
+  const stationOwned = (props.stationId == getUser().userID)
 
+  var youtubePlayer = null
+  if (stationOwned) {
+    youtubePlayer = (
       <YoutubePlayer
         isReady={props.isReady}
         onReady={props.onReady}
@@ -30,6 +31,14 @@ function StationPure(props) {
         videoId={props.videoPlayed}
         onChangeState={props.onChangeState}
       />
+    )
+  }
+
+  return (
+    <View style={styles.container}>
+      <Header>{props.stationTitle}</Header>
+
+      {youtubePlayer}
 
       <VideoList
         items={props.videos}
@@ -40,7 +49,7 @@ function StationPure(props) {
         style={styles.buttons}
         addSong={props.addSong}
         nextSong={props.nextSong}
-        stationOwned={(props.stationId == getUser().userID)}
+        stationOwned={stationOwned}
       />
     </View>
   )

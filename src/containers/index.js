@@ -13,7 +13,6 @@ class MyRouter extends Component {
   componentWillMount() {
     googleSignIn()
       .then(user => this.props.dispatch(userLoggedIn(user)))
-      .catch(() => googleSignIn())
       .then(() => Actions.listStations())
   }
 
