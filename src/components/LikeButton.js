@@ -10,7 +10,7 @@ function LikeButton(props) {
   return (
     <View style={styles.container}>
       <Text style={[styles.count, { color }]}>
-        5
+        {props.nbLikes}
       </Text>
       <Image
         style={[styles.image, { tintColor: color }]}

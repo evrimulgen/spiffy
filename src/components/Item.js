@@ -24,7 +24,7 @@ function Item(props) {
       )
       case 'video':
       return (
-        <LikeButton />
+        <LikeButton nbLikes={props.nbLikes}/>
       )
     }
   }
