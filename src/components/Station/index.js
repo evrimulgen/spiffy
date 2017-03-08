@@ -15,7 +15,7 @@ function StationPure(props) {
     <VideoItem
       {...video}
       type={'video'}
-      onVideoSelected={() => props.onVideoSelected(video)}
+      onItemSelected={() => props.onVideoSelected(video)}
     />
   )
 

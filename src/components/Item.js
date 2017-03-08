@@ -14,7 +14,6 @@ const defaultProps = {
 }
 
 function Item(props) {
-  console.log(props)
   const renderBody = () => {
     switch (props.type) {
       case 'station':
@@ -40,7 +39,7 @@ function Item(props) {
         />
 
         <View style={styles.body}>
-          <Text style={styles.stationTitle} numberOfLines={2}>
+          <Text style={styles.title} numberOfLines={2}>
             {props.title}
           </Text>
           {renderBody()}
@@ -70,6 +69,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     marginHorizontal: 5,
+    marginVertical: 10,
     alignSelf: 'stretch',
     justifyContent: 'space-around',
   },

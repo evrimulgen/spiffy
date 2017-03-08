@@ -34,7 +34,9 @@ class Station extends Component {
     this.props.dispatch(nextSong())
   }
 
-  onVideoSelected(itemId) {}
+  onVideoSelected(video) {
+    console.log(video)
+  }
 
   onChangeState(event) {
     if (event.state == 'ended') {

@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   count: {
-    fontSize: 18,
-    paddingRight: 5,
+    fontSize: 16,
+    paddingRight: 4,
   },
   image: {
-    height: 18,
-    width: 18,
+    height: 16,
+    width: 16,
   },
 })
 
