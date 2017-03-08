@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
 import StationPure from '../components/Station'
-import { fetchVideos, nextSong, ytPlayerReady } from '../actions/StationActions'
+import { fetchVideos, nextSong, videoLiked, ytPlayerReady } from '../actions/StationActions'
 
 const propTypes = {
   videos: PropTypes.array
@@ -19,6 +19,7 @@ class Station extends Component {
     this.nextSongg = this.nextSongg.bind(this)
     this.onChangeState = this.onChangeState.bind(this)
     this.onReady = this.onReady.bind(this)
+    this.onVideoSelected = this.onVideoSelected.bind(this)
   }
 
   componentWillMount() {
@@ -35,7 +36,7 @@ class Station extends Component {
   }
 
   onVideoSelected(video) {
-    console.log(video)
+    this.props.dispatch(videoLiked(video))
   }
 
   onChangeState(event) {

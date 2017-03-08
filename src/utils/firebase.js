@@ -10,6 +10,7 @@ const db = firebase.database()
 const getStationsRef = () => db.ref('stations')
 const getStationRef = stationId => db.ref(`stations/${stationId}`)
 const getVideosRef = stationId => db.ref(`stations/${stationId}/videos`)
+const getVideoRef = (stationId, key) => db.ref(`stations/${stationId}/videos/${key}`)
 
 export function createStation() {
   const { name, userID } = getUser()
@@ -57,7 +58,13 @@ export function listAllVideos(stationId, callback) {
 }
 
 export function addVideo(stationId, video) {
-  return firebase.database().ref('stations/' + stationId + '/videos/').push(video)
+  var newVideoRef = getVideosRef(stationId).push()
+  var newVideo = {
+    ...video,
+    key: newVideoRef.key,
+    nbLikes: 0,
+  }
+  newVideoRef.set(newVideo)
 }
 
 export function getStation(stationId) {
@@ -69,4 +76,18 @@ export function removeFirstVideo(stationId) {
   getVideosRef(stationId).once('value')
     .then(snapshot => Object.keys(snapshot.val())[0])
     .then(firstVideoKey => getVideosRef(stationId).child(firstVideoKey).remove())
+}
+
+export function addLikeToVideo(stationId, video) {
+  const { userID } = getUser()
+  const videoRef = getVideoRef(stationId, video.key)
+  var userAlreadyLiked = false
+  videoRef.child('likes').once('value')
+    .then(snap => {
+      if (snap.child(userID).exists()) {
+      } else {
+        videoRef.child('likes').child(userID).set(userID)
+        videoRef.child('nbLikes').transaction(currentVal => currentVal + 1)
+      }
+    })
 }

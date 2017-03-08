@@ -8,6 +8,7 @@ import {
   createStation,
   listAllVideos,
   removeFirstVideo,
+  addLikeToVideo,
 } from '../utils/firebase'
 
 export function openStation(station) {
@@ -92,25 +93,28 @@ export function videoAdded(video) {
       type: t.ADD_VIDEO_REQUEST,
     })
     addVideo(id, video)
-      .then(() => dispatch({
-        type: t.ADD_VIDEO_SUCCESS,
-      }))
-      .catch(error => dispatch({
-        type: t.ADD_VIDEO_FAILURE,
-        payload: error,
-        error: true,
-      }))
-      .then(() => Actions.pop())
+    Actions.pop()
   }
 }
 
 export function nextSong() {
   return (dispatch, getState) => {
+    const { station: { id } } = getState()
     dispatch({
       type: t.NEXT_SONG,
     })
-    const { station: { id } } = getState()
     removeFirstVideo(id)
+  }
+}
+
+export function videoLiked(video) {
+  return (dispatch, getState) => {
+    const { station: { id } } = getState()
+    dispatch({
+      type: t.VIDEO_LIKED,
+      payload: video.id,
+    })
+    addLikeToVideo(id, video)
   }
 }
 
