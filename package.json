@@ -10,7 +10,7 @@
     "firebase": "^3.6.4",
     "lodash": "^4.17.2",
     "react": "15.4.1",
-    "react-native": "0.39.2",
+    "react-native": "^0.42.3",
     "react-native-communications": "^2.1.4",
     "react-native-facebook-login": "^1.4.0",
     "react-native-firestack": "^2.3.9",
