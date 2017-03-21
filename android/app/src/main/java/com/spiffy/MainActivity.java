@@ -1,7 +1,6 @@
 package com.spiffy;
 
 import com.facebook.react.ReactActivity;
-import com.reactlibrary.googlesignin.RNGoogleSignInPackage;
 
 public class MainActivity extends ReactActivity {
 
