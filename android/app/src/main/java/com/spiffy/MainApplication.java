@@ -10,6 +10,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
+import com.magus.fblogin.FacebookLoginPackage;
 import io.fullstack.firestack.FirestackPackage;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new FacebookLoginPackage(),
           new FirestackPackage(),
           new ReactNativeYouTube()
       );

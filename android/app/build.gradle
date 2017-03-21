@@ -59,8 +59,9 @@ android {
 }
 
 dependencies {
-    compile(project(':react-native-firestack')){
-        exclude group: "com.google.android.gms" // very important
+    compile project(':react-native-facebook-login')
+    compile(project(':react-native-firestack')) {
+        exclude group: "com.google.android.gms"// very important
     }
     compile project(':RCTYouTube')
     compile fileTree(dir: "libs", include: ["*.jar"])
