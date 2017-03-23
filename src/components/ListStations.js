@@ -27,10 +27,12 @@ function ListStationPure(props) {
         renderRow={renderStation}
       />
 
+      {/*
       <NewStationButton
         style={styles.newStationButton}
         onPress={props.onCreateStation}
       />
+      */}
     </View>
   )
 }

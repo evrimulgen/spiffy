@@ -16,12 +16,12 @@ const defaultProps = {
 function Item(props) {
   const renderBody = () => {
     switch (props.type) {
-      case 'station':
-      return (
-        <Text>
-          Created by <Text style={styles.createdBy}>{props.createdBy}</Text>
-        </Text>
-      )
+      //case 'station':
+      //return (
+      //  <Text>
+      //    Created by <Text style={styles.createdBy}>{props.createdBy}</Text>
+      //  </Text>
+      //)
       case 'video':
       return (
         <LikeButton nbLikes={props.nbLikes}/>
